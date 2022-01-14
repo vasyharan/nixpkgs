@@ -51,3 +51,10 @@ set viewoptions-=options
 " set viewoptions-=curdir
 " set gdefault
 " set cmdheight=2
+
+augroup View
+  au!
+  let btToIgnore = ['terminal', 'nofile']
+  au BufWinLeave ?* if index(btToIgnore, &buftype) < 0 | mkview | endif
+  au BufWinEnter ?* if &buftype !~ 'nofile' | silent! loadview | endif
+augroup END
