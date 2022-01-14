@@ -88,6 +88,9 @@
         };
         ignores = [
           "Session.vim"
+          "shell.nix"
+          ".direnv/"
+          ".envrc"
         ];
         extraConfig = {
           help = {
