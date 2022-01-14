@@ -1,4 +1,4 @@
-local keymap = function(key) -- {{{
+function keymap(key) -- {{{
   -- get the extra options
   local opts = {noremap = true}
   for i, v in pairs(key) do
@@ -29,7 +29,7 @@ keymap { 'n', ',t', "<cmd>NvimTreeToggle<cr>" }
 keymap { 'n', ',T', "<cmd>NvimTreeFindFile<cr>" }
 
 keymap { 'n', 'vv', '<cmd>vertical split<cr>' }
-keymap { 'n', 'ss', '<cmd>split<cr>' }
+keymap { 'n', 'vs', '<cmd>split<cr>' }
 
 keymap { 'n', '<space>q', "<cmd>:Bdelete<cr>" }
 keymap { 'n', '<space>w', "<cmd>w<cr>" }

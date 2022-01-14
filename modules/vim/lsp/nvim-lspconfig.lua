@@ -1,23 +1,6 @@
 local lspconfig = require('lspconfig')
 local lsp_status = require('lsp-status')
 
-function keymap(key) -- {{{
-  -- get the extra options
-  local opts = {noremap = true}
-  for i, v in pairs(key) do
-    if type(i) == 'string' then opts[i] = v end
-  end
-
-  -- basic support for buffer-scoped keybindings
-  local buffer = opts.buffer
-  opts.buffer = nil
-
-  if buffer then
-    vim.api.nvim_buf_set_keymap(0, key[1], key[2], key[3], opts)
-  else
-    vim.api.nvim_set_keymap(key[1], key[2], key[3], opts)
-  end
-end -- }}}
 function on_attach(client, bufnr) -- {{{
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
