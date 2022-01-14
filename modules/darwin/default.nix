@@ -5,11 +5,17 @@
     ../common.nix
   ];
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  home = {
+    xdg.configFile = {
+      karabiner = {
+        source = ../../dotfiles/karabiner;
+        recursive = true;
+      };
+    };
+  };
 
-  # Create /etc/bashrc that loads the nix-darwin environment.
-  programs.zsh.enable = true;   # default shell on catalina
+  services.nix-daemon.enable = true;
+  programs.zsh.enable = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   system.stateVersion = 4;
