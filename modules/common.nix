@@ -44,9 +44,6 @@
 
   fonts = {
     enableFontDir = true;
-    fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "Hack" "InconsolataGo" ]; })
-    ];
   };
 
   home-manager.useGlobalPkgs = true;
@@ -61,6 +58,9 @@
           target = ".p10k.zsh";
         };
       };
+      packages = with pkgs; [
+        (nerdfonts.override { fonts = [ "FiraCode" "Hack" "InconsolataGo" ]; })
+      ];
     };
 
     xdg = {
