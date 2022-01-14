@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: {
-  imports = [ ./ui ./treesitter ];
+  imports = [ ./ui ./treesitter ./lsp ];
   home.programs.neovim = let 
     inherit (lib.vimUtils ./.) readVimSection readLuaSection pluginWithLua;
   in {
