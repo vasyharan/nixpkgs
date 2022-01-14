@@ -9,9 +9,20 @@
     dock = {
       autohide = true;
       mru-spaces = false;
-      orientation = "right";
+      orientation = "left";
       tilesize = 36;
       # showhidden = true;
+    };
+
+    NSGlobalDomain = {
+      InitialKeyRepeat = 10;
+      KeyRepeat = 1;
+      "com.apple.swipescrolldirection" = false;
+    };
+
+    trackpad = {
+      Clicking = true;
+      TrackpadThreeFingerDrag = true;
     };
   };
 }
