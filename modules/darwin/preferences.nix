@@ -15,8 +15,9 @@
     };
 
     NSGlobalDomain = {
-      InitialKeyRepeat = 10;
-      KeyRepeat = 1;
+      InitialKeyRepeat = 15;
+      KeyRepeat = 2;
+      ApplePressAndHoldEnabled = false;
       "com.apple.swipescrolldirection" = false;
     };
 
