@@ -1,5 +1,5 @@
 { config, lib, pkgs, options, ... }: {
-  imports = [ ./user.nix ./vim ./zsh ];
+  imports = [ ./user.nix ./zsh ./tmux ./vim ];
 
   nixpkgs = {
     config = { };
