@@ -1,7 +1,3 @@
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-export WORDCHARS= # configure word boundary
-
 # autosuggest {{{
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -18,3 +14,5 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 # ripgrep {{{
 RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 # }}}
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -8,6 +8,9 @@
   in {
     enable = true;
     dotDir = ".config/zsh";
+    initExtraFirst = ''
+      ${builtins.readFile(./. + "/settings-first.zsh")}
+    '';
     initExtra = ''
       ${builtins.readFile(./. + "/settings.zsh")}
     '';
