@@ -34,3 +34,7 @@ keymap { 'n', 'vs', '<cmd>split<cr>' }
 keymap { 'n', '<space>q', "<cmd>:Bdelete<cr>" }
 keymap { 'n', '<space>w', "<cmd>w<cr>" }
 keymap { 'n', '<space>W', "<cmd>wa<cr>" }
+
+keymap { 'n', '<space>g', "<cmd>Git<cr>" }
+keymap { 'n', '<space>gl', "<cmd>Git log<cr>" }
+keymap { 'n', '<space>G', ":Git " }

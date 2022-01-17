@@ -22,6 +22,7 @@
         { plugin = vim-visualstar; }
         { plugin = vim-swap; }
         { plugin = targets-vim; }
+        { plugin = vim-bbye; }
 
         (pluginWithLua { plugin = kommentary; })
       ];
