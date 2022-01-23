@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: {
   imports = [ ./ui ./treesitter ./lsp ];
-  home.programs.neovim = let 
+  home.programs.neovim = let
     inherit (lib.vimUtils ./.) readVimSection readLuaSection pluginWithLua;
   in {
     enable = true;
@@ -10,6 +10,7 @@
     extraConfig = ''
       ${readVimSection "settings"}
       ${readLuaSection "keymap"}
+      ${readLuaSection "trim"}
     '';
     plugins = with pkgs.vimPlugins;
       [
