@@ -24,7 +24,8 @@
       { system
       , baseModules ? [
           home-manager.darwinModules.home-manager
-          ./modules/darwin
+          ./modules/os/darwin
+          ./modules/home
         ]
       , extraModules ? []
       }: darwinSystem {
