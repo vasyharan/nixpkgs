@@ -15,7 +15,7 @@
   };
   outputs = inputs@{ self, nixpkgs, darwin, home-manager, flake-utils, ... }:
   let
-    lib = nixpkgs.lib.extend 
+    lib = nixpkgs.lib.extend
       (final: prev: (import ./lib final) // home-manager.lib);
 
     inherit (darwin.lib) darwinSystem;
