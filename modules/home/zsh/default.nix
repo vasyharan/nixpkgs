@@ -33,9 +33,11 @@
       dh = "dirs -v";
       todos = "rg -u 'todo[^:]*haran'";
     };
+    dirHashes = {
+      docs = "$HOME/Documents";
+    };
     plugins = with pkgs; [
       (mkZshPlugin { pkg = zsh-powerlevel10k; file = "powerlevel10k.zsh-theme"; })
     ];
   };
 }
-
