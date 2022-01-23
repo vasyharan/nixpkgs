@@ -24,8 +24,14 @@
         { plugin = vim-swap; }
         { plugin = targets-vim; }
         { plugin = vim-bbye; }
+        # 10SpeedDatingFormat %Y-%m-%d %a
+        { plugin = vim-speeddating; }
 
         (pluginWithLua { plugin = kommentary; })
       ];
+  };
+
+  home.xdg.configFile."nvim/after/plugin/vim-speeddating.vim" = {
+    source = ./vim-speeddating.vim;
   };
 }
