@@ -35,6 +35,7 @@
     };
     dirHashes = {
       docs = "$HOME/Documents";
+      src = "$HOME/src";
     };
     plugins = with pkgs; [
       (mkZshPlugin { pkg = zsh-powerlevel10k; file = "powerlevel10k.zsh-theme"; })
