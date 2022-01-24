@@ -8,4 +8,9 @@
     userName = "Thirukumaran Vaseeharan";
     userEmail = "haran.thirukumaran@particlehealth.com";
   };
+  home.programs.zsh = {
+    dirHashes = {
+      quark = "$HOME/src/quark";
+    };
+  };
 }
