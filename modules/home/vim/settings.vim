@@ -52,9 +52,16 @@ set viewoptions-=options
 " set gdefault
 " set cmdheight=2
 
+let g:markdown_folding=1
+
 augroup View
   au!
   let btToIgnore = ['terminal', 'nofile']
   au BufWinLeave ?* if index(btToIgnore, &buftype) < 0 | mkview | endif
   au BufWinEnter ?* if &buftype !~ 'nofile' | silent! loadview | endif
+augroup END
+
+augroup WorklogHack
+  au!
+  au BufRead worklog.org nmap <buffer> <C-A> <Plug>SpeedDatingUp | nmap <buffer> <C-X> <Plug>SpeedDatingDown
 augroup END

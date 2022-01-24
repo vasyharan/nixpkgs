@@ -24,9 +24,9 @@
         { plugin = vim-swap; }
         { plugin = targets-vim; }
         { plugin = vim-bbye; }
-        # 10SpeedDatingFormat %Y-%m-%d %a
         { plugin = vim-speeddating; }
 
+        (pluginWithLua { plugin = orgmode; })
         (pluginWithLua { plugin = kommentary; })
       ];
   };
