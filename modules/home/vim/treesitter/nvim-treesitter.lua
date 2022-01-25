@@ -27,6 +27,7 @@ config.setup {
     'python',
     'scala',
     'svelte',
+    'hcl',
     'toml',
     'typescript',
   },
