@@ -39,7 +39,7 @@
       };
       ignores = [
         "Session.vim"
-        "shell.nix"
+        "*.nix"
         ".direnv/"
         ".envrc"
       ];
