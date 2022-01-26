@@ -48,6 +48,7 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
       in {
-        devShell = import ./shell.nix { inherit pkgs; };
+        inherit (pkgs) devShell;
+        /* devShell = import ./shell.nix { inherit pkgs; }; */
       });
 }
