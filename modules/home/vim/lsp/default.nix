@@ -5,6 +5,7 @@
     plugins = with pkgs.vimPlugins;
       [
         (pluginWithLua { plugin = nvim-lspconfig; })
+        (pluginWithLua { plugin = nvim-jdtls; })
       ];
   };
 }

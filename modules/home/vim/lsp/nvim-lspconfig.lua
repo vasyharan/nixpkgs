@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 local lsp_status = require('lsp-status')
 
-function on_attach(client, bufnr) -- {{{
+function lsp_on_attach(client, bufnr) -- {{{
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
   local protocol = require('vim.lsp.protocol')
@@ -88,22 +88,22 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 -- }}}
 lspconfig.gopls.setup { -- {{{
   cmd = { "gopls", "serve" },
-  on_attach = on_attach,
+  on_attach = lsp_on_attach,
   capabilities = vim.tbl_extend('keep', {}, lsp_status.capabilities)
 } -- }}}
 lspconfig.rust_analyzer.setup{ -- {{{
-  on_attach = on_attach,
+  on_attach = lsp_on_attach,
   capabilities = vim.tbl_extend('keep', {}, lsp_status.capabilities)
 } -- }}}
 lspconfig.tsserver.setup { -- {{{
-  on_attach = on_attach,
+  on_attach = lsp_on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
 } -- }}}
 lspconfig.svelte.setup { -- {{{
-  on_attach = on_attach,
+  on_attach = lsp_on_attach,
 } -- }}}
 lspconfig.pyright.setup { -- {{{
-  on_attach = on_attach,
+  on_attach = lsp_on_attach,
   settings = {
     python = {
       analysis = {
@@ -115,5 +115,5 @@ lspconfig.pyright.setup { -- {{{
   },
 } -- }}}
 lspconfig.terraformls.setup { -- {{{
-  on_attach = on_attach,
+  on_attach = lsp_on_attach,
 } -- }}}
