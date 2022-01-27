@@ -21,9 +21,6 @@ keymap { 'n', ',g', "<cmd>lua require('telescope.builtin').live_grep()<cr>" }
 keymap { 'n', ',*', "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand(\"<cword>\") })<cr>" }
 keymap { 'n', ',b', "<cmd>lua require('telescope.builtin').buffers()<cr>" }
 keymap { 'n', ',h', "<cmd>lua require('telescope.builtin').help_tags()<cr>" }
-keymap { 'n', 'gd', "<cmd>lua require'telescope.builtin'.lsp_definitions()<cr>" }
-keymap { 'n', 'gi', "<cmd>lua require'telescope.builtin'.lsp_implementations()<cr>" }
-keymap { 'n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references()<cr>" }
 
 keymap { 'n', ',t', "<cmd>NvimTreeToggle<cr>" }
 keymap { 'n', ',T', "<cmd>NvimTreeFindFile<cr>" }

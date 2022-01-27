@@ -16,7 +16,7 @@ local function lsp_on_attach(client, bufnr) -- {{{
   local opts = { noremap=true, silent=true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  -- map { 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', silent=true }
+  keymap { 'n', 'gd', "<cmd>lua require'telescope.builtin'.lsp_definitions()<cr>" }
   keymap { 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', silent=true }
   keymap { 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', silent = true }
   keymap { 'i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', silent = true }
@@ -30,11 +30,11 @@ local function lsp_on_attach(client, bufnr) -- {{{
   keymap { 'n', ']e', '<cmd>lua vim.diagnostic.goto_next()<CR>', silent = true }
   keymap { 'n', '<space>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', silent = true }
 
-  keymap { 'n', 'xx', '<cmd>TroubleToggle<cr>', silent=true }
-  keymap { 'n', 'xw', '<cmd>TroubleToggle workspace_diagnostics<cr>', silent=true }
-  keymap { 'n', 'xd', '<cmd>TroubleToggle document_diagnostics<cr>', silent=true }
-  keymap { 'n', 'xq', '<cmd>TroubleToggle quickfix<cr>', silent=true }
-  keymap { 'n', 'xl', '<cmd>TroubleToggle loclist<cr>', silent=true }
+  keymap { 'n', ',xx', '<cmd>TroubleToggle<cr>', silent=true }
+  keymap { 'n', ',xw', '<cmd>TroubleToggle workspace_diagnostics<cr>', silent=true }
+  keymap { 'n', ',xd', '<cmd>TroubleToggle document_diagnostics<cr>', silent=true }
+  keymap { 'n', ',xq', '<cmd>TroubleToggle quickfix<cr>', silent=true }
+  keymap { 'n', ',xl', '<cmd>TroubleToggle loclist<cr>', silent=true }
 
   -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   -- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
