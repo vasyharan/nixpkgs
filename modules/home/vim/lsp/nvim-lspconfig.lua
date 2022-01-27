@@ -99,7 +99,14 @@ function lspconfig_setup(server, config)
   }))
 end
 
-lspconfig_setup('gopls', {})
+lspconfig_setup('gopls', {
+  settings = {
+    gopls = {
+      buildFlags = {'-tags=integration'},
+      staticcheck = true,
+    },
+  },
+})
 lspconfig_setup('pyright', { -- {{{
   settings = {
     python = {
