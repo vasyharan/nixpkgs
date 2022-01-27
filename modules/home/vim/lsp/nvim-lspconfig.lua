@@ -1,7 +1,8 @@
 local lspconfig = require('lspconfig')
 local lsp_status = require('lsp-status')
+local cmp_lsp = require('cmp_nvim_lsp')
 
-function lsp_on_attach(client, bufnr) -- {{{
+local function lsp_on_attach(client, bufnr) -- {{{
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
   local protocol = require('vim.lsp.protocol')
@@ -86,34 +87,33 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   }
 })
 -- }}}
-lspconfig.gopls.setup { -- {{{
-  cmd = { "gopls", "serve" },
-  on_attach = lsp_on_attach,
-  capabilities = vim.tbl_extend('keep', {}, lsp_status.capabilities)
-} -- }}}
-lspconfig.rust_analyzer.setup{ -- {{{
-  on_attach = lsp_on_attach,
-  capabilities = vim.tbl_extend('keep', {}, lsp_status.capabilities)
-} -- }}}
-lspconfig.tsserver.setup { -- {{{
-  on_attach = lsp_on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
-} -- }}}
-lspconfig.svelte.setup { -- {{{
-  on_attach = lsp_on_attach,
-} -- }}}
-lspconfig.pyright.setup { -- {{{
-  on_attach = lsp_on_attach,
+
+function lspconfig_setup(server, config)
+  -- Setup lspconfig.
+  local lsp_capabilities = vim.tbl_extend('keep', vim.lsp.protocol.make_client_capabilities(), lsp_status.capabilities)
+  local capabilities = cmp_lsp.update_capabilities(lsp_capabilities)
+
+  lspconfig[server].setup(vim.tbl_extend('keep', config, {
+    on_attach = lsp_on_attach,
+    capabilities = capabilities
+  }))
+end
+
+lspconfig_setup('gopls', {})
+lspconfig_setup('pyright', { -- {{{
   settings = {
     python = {
       analysis = {
         autoSearchPaths = true,
-        diagnosticMode = "workspace",
+        diagnosticMode = 'workspace',
         useLibraryCodeForTypes = true,
       },
     },
   },
-} -- }}}
-lspconfig.terraformls.setup { -- {{{
-  on_attach = lsp_on_attach,
-} -- }}}
+}) -- }}}
+lspconfig_setup('rust_analyzer', {})
+lspconfig_setup('svelte', {})
+lspconfig_setup('terraformls', {})
+lspconfig_setup('tsserver', { -- {{{
+  filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
+}) -- }}}
