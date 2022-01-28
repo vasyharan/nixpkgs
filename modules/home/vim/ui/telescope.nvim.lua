@@ -17,10 +17,6 @@ telescope.setup{
     border = true,
     borderchars = {
       "z",
-      -- ┐┌ ┘└
-      -- preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      -- results = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-      -- results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
       preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
       prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
       results = { " " },
@@ -52,3 +48,8 @@ telescope.setup{
   }
 }
 telescope.load_extension('fzf')
+
+vim.cmd [=[
+highlight TelescopeSelection ctermfg=15 ctermbg=0 guifg=#f9f9ff guibg=#1b1d25 guisp=#f9f9ff
+highlight Special            ctermfg=12 guifg=#57c7fe
+]=]

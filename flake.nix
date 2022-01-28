@@ -30,7 +30,7 @@
       , extraModules ? []
       }: darwinSystem {
         inherit system;
-        modules = baseModules ++ extraModules;
+        modules = [ ({ config, pkgs, ... }: { nixpkgs.overlays = [ (import ./overlay.nix) ]; }) ] ++ baseModules ++ extraModules;
         specialArgs = { inherit inputs lib; };
       };
 

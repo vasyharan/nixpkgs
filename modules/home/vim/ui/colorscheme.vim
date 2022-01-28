@@ -16,5 +16,5 @@ else
   set background=dark
 endif
 
-colorscheme NeoSolarized
+colorscheme snazzy
 

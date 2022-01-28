@@ -4,6 +4,9 @@
   in {
     plugins = with pkgs.vimPlugins;
       [
+        ({ plugin = vim-solarized8; })
+        ({ plugin = nord-nvim; })
+        ({ plugin = vim-snazzy; })
         (pluginWithCfg { plugin = NeoSolarized; file = "colorscheme"; })
         (pluginWithLua { plugin = lsp-status-nvim; })
         (pluginWithLua { plugin = lualine-nvim; })
