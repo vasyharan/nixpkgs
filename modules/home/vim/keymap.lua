@@ -32,6 +32,6 @@ keymap { 'n', '<space>q', "<cmd>:Bdelete<cr>" }
 keymap { 'n', '<space>w', "<cmd>w<cr>" }
 keymap { 'n', '<space>W', "<cmd>wa<cr>" }
 
-keymap { 'n', '<space>gg', "<cmd>Git<cr>" }
-keymap { 'n', '<space>gl', "<cmd>Git log<cr>" }
-keymap { 'n', '<space>G', ":Git " }
+keymap { 'n', ',vv', "<cmd>Git<cr>" }
+keymap { 'n', ',vl', "<cmd>Git log<cr>" }
+keymap { 'n', ',v<space>', ":Git " }
