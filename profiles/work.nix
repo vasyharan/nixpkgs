@@ -8,9 +8,21 @@
     userName = "Thirukumaran Vaseeharan";
     userEmail = "haran.thirukumaran@particlehealth.com";
   };
+
   home.programs.zsh = {
     dirHashes = {
       quark = "$HOME/src/quark";
+    };
+  };
+
+  environment = {
+    systemPackages = with pkgs; [
+      openjdk17
+    ];
+
+    variables = {
+      JDK_HOME = "${pkgs.openjdk17.home}";
+      JAVA_HOME = "${pkgs.openjdk17.home}";
     };
   };
 }
