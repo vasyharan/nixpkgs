@@ -1,6 +1,7 @@
 function keymap(key) -- {{{
   -- get the extra options
-  local opts = {noremap = true}
+  -- local opts = {noremap = true}
+  local opts = {}
   for i, v in pairs(key) do
     if type(i) == 'string' then opts[i] = v end
   end
@@ -10,7 +11,11 @@ function keymap(key) -- {{{
   opts.buffer = nil
 
   if buffer then
-    vim.api.nvim_buf_set_keymap(0, key[1], key[2], key[3], opts)
+    if type(buffer) == 'boolean' then
+      vim.api.nvim_buf_set_keymap(0, key[1], key[2], key[3], opts)
+    else
+      vim.api.nvim_buf_set_keymap(buffer, key[1], key[2], key[3], opts)
+    end
   else
     vim.api.nvim_set_keymap(key[1], key[2], key[3], opts)
   end
@@ -36,3 +41,16 @@ keymap { 'n', '<space>W', "<cmd>wa<cr>" }
 keymap { 'n', '<space>vv', "<cmd>Git<cr>" }
 keymap { 'n', '<space>vl', "<cmd>Git log<cr>" }
 keymap { 'n', '<space>v<space>', ":Git " }
+
+-- nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+keymap { 'n', '<space>dd', "<cmd>lua require('dap').continue()<cr>" }
+keymap { 'n', '<space>dD', "<cmd>lua require('dap').run_last()<cr>" }
+keymap { 'n', '<space>db', "<cmd>lua require('dap').toggle_breakpoint()<cr>" }
+keymap { 'n', '<space>dB', "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>" }
+keymap { 'n', '<space>dr', "<cmd>lua require('dap').repl.open()<cr>" }
+
+keymap { 'n', '<F4>', "<cmd>lua require('dap').toggle_breakpoint()<cr>" }
+keymap { 'n', '<F5>', "<cmd>lua require('dap').continue()<cr>" }
+keymap { 'n', '<F7>', "<cmd>lua require('dap').step_into()<cr>" }
+keymap { 'n', '<F8>', "<cmd>lua require('dap').step_over()<cr>" }
+keymap { 'n', '<S-F8>', "<cmd>lua require('dap').step_out()<cr>" }

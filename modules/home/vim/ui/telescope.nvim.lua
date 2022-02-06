@@ -48,6 +48,7 @@ telescope.setup{
   }
 }
 telescope.load_extension('fzf')
+-- telescope.load_extension('dap')
 
 vim.cmd [=[
 highlight TelescopeSelection ctermfg=15 ctermbg=0 guifg=#f9f9ff guibg=#1b1d25 guisp=#f9f9ff

@@ -1,6 +1,6 @@
 self: super:
 let
-  inherit (super) vimPlugins vimUtils fetchFromGitHub lib;
+  inherit (super) lib fetchFromGitHub vimPlugins vimUtils;
 in
 {
   vimPlugins = vimPlugins // {
@@ -27,5 +27,18 @@ in
       };
       meta.homepage = "https://github.com/connorholyday/vim-snazzy";
     };
+
+    nvim-dap-go = vimUtils.buildVimPluginFrom2Nix rec {
+      pname = "nvim-dap-go";
+      version = "84c109ab994e241feee1d195f2e7c23834101a93";
+      src = fetchFromGitHub {
+        owner = "leoluz";
+        repo = "nvim-dap-go";
+        rev = version;
+        sha256 = "sha256-x+xoYECsrXPB+pR1ljvjwZvC7rYkzyRm886xoxJP+D4=";
+      };
+      meta.homepage = "https://github.com/leoluz/nvim-dap-go";
+    };
+
   };
 }

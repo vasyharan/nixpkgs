@@ -4,10 +4,10 @@
   in {
     plugins = with pkgs.vimPlugins;
       [
-        (pluginWithLua { plugin = nvim-lspconfig; })
-        (pluginWithLua { plugin = nvim-jdtls; })
-        { plugin = nvim-web-devicons; }
-        { plugin = trouble-nvim; }
+        (pluginWithLua { plugin = nvim-dap; })
+        { plugin = nvim-dap-ui; }
+        { plugin = nvim-dap-virtual-text; }
+        (pluginWithLua { plugin = nvim-dap-go; })
       ];
   };
 }
