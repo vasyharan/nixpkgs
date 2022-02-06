@@ -19,6 +19,7 @@
         { plugin = vim-repeat; }
         { plugin = vim-surround; }
         { plugin = vim-obsession; }
+        { plugin = vim-easy-align; }
 
         { plugin = vim-visualstar; }
         { plugin = vim-swap; }
