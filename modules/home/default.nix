@@ -6,10 +6,6 @@
       EDITOR = "vim";
     };
     file = {
-      p10k = {
-        source = ../../dotfiles/p10k.zsh;
-        target = ".p10k.zsh";
-      };
       ripgreprc = {
         source = ../../dotfiles/ripgreprc;
         target = ".ripgreprc";
@@ -20,7 +16,9 @@
     ];
   };
 
-  home.xdg = { enable = true; };
+  home.xdg = {
+    enable = true;
+  };
 
   home.programs = {
     fzf.enable = true;

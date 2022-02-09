@@ -1,5 +1,7 @@
 setopt autopushd pushdminus pushdsilent
 
+fpath+="$HOME/.config/zsh/completion"
+
 bindkey -e
 autoload -U select-word-style
 select-word-style bash
