@@ -42,6 +42,9 @@
         ".envrc"
       ];
       extraConfig = {
+        init = {
+          defaultBranch = "main";
+        };
         help = {
           autocorrect = 1;
         };
