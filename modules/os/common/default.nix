@@ -36,6 +36,7 @@
       fzf
       ripgrep
       jq
+      gnupg
     ];
 
     variables = {
