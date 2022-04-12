@@ -37,8 +37,9 @@
     enableAutosuggestions = true;
     enableSyntaxHighlighting = true;
     shellAliases = {
+      cat = "bat";
       g = "git";
-      ls = "ls -G";
+      ls = "exa";
       ll = "ls -l";
       la = "ls -a";
       dh = "dirs -v";

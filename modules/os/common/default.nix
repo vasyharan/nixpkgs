@@ -37,6 +37,9 @@
       ripgrep
       jq
       gnupg
+      exa
+      bat
+      tldr
     ];
 
     variables = {
