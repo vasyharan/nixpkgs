@@ -47,6 +47,9 @@
         init = {
           defaultBranch = "main";
         };
+        delta = {
+          navigate = true;
+        };
         help = {
           autocorrect = 1;
         };
