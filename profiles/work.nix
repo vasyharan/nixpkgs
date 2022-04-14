@@ -7,6 +7,17 @@
   home.programs.git = {
     userName = "Thirukumaran Vaseeharan";
     userEmail = "haran.thirukumaran@particlehealth.com";
+    lfs = {
+      enable = true;
+    };
+    extraConfig = {
+      /* "filter \"lfs\"" = {
+        smudge = "git-lfs smudge -- %f";
+        clean = "git-lfs clean -- %f";
+        process = "git-lfs filter-process";
+        required = true;
+      }; */
+    };
   };
 
   home.programs.zsh = {
