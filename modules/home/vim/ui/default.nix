@@ -4,10 +4,8 @@
   in {
     plugins = with pkgs.vimPlugins;
       [
-        ({ plugin = vim-solarized8; })
-        ({ plugin = nord-nvim; })
-        ({ plugin = vim-snazzy; })
-        (pluginWithCfg { plugin = NeoSolarized; file = "colorscheme"; })
+        (pluginWithCfg { plugin = vim-snazzy; file = "colorscheme"; })
+        /* (pluginWithCfg { plugin = oceanic-next; file = "colorscheme"; }) */
         (pluginWithLua { plugin = lsp-status-nvim; })
         (pluginWithLua { plugin = lualine-nvim; })
         ({ plugin = telescope-fzf-native-nvim; })
