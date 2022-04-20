@@ -17,6 +17,9 @@
         process = "git-lfs filter-process";
         required = true;
       }; */
+      "url \"ssh://git@github.com/ParticleHealth\"" = {
+        insteadOf = "https://github.com/ParticleHealth";
+      };
     };
   };
 
