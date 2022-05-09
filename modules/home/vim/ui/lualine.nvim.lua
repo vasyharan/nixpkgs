@@ -3,7 +3,7 @@ local statusline = require('lsp-status/statusline')
 
 modemap = {
   ['n']    = 'No',
-  ['nt']    = 'No',
+  ['nt']    = 'Nt',
   ['no']   = 'O-PENDING',
   ['nov']  = 'O-PENDING',
   ['noV']  = 'O-PENDING',
