@@ -5,6 +5,7 @@
     plugins = with pkgs.vimPlugins;
       [
         (pluginWithCfg { plugin = vim-snazzy; file = "colorscheme"; })
+        ({ plugin = NeoSolarized; })
         /* (pluginWithCfg { plugin = oceanic-next; file = "colorscheme"; }) */
         (pluginWithLua { plugin = lsp-status-nvim; })
         (pluginWithLua { plugin = lualine-nvim; })

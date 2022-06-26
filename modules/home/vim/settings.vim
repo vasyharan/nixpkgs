@@ -57,8 +57,8 @@ let g:markdown_folding=1
 augroup View
   au!
   let btToIgnore = ['terminal', 'nofile']
-  au BufWinLeave ?* if index(btToIgnore, &buftype) < 0 | mkview | endif
-  au BufWinEnter ?* if &buftype !~ 'nofile' | silent! loadview | endif
+  au BufWinLeave ?* if index(btToIgnore, &buftype) < 0 | silent! mkview | endif
+  au BufWinEnter ?* if index(btToIgnore, &buftype) < 0 | silent! loadview | endif
 augroup END
 
 augroup WorklogHack

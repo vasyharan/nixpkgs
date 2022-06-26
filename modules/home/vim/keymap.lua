@@ -21,6 +21,8 @@ function keymap(key) -- {{{
   end
 end -- }}}
 
+keymap { 't', '<esc>', "<C-\\><C-n>", noremap = true }
+
 keymap { 'n', ',f', "<cmd>lua require('telescope.builtin').find_files(ivy)<cr>" }
 keymap { 'n', ',g', "<cmd>lua require('telescope.builtin').live_grep()<cr>" }
 keymap { 'n', ',*', "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand(\"<cword>\") })<cr>" }
