@@ -51,6 +51,7 @@ compinit -C
       la = "ls -a";
       dh = "dirs -v";
       todos = "rg -u 'todo[^:]*haran'";
+      vim = "nvim";
     };
     dirHashes = {
       docs = "$HOME/Documents";
