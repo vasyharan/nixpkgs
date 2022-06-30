@@ -12,7 +12,8 @@
       };
     };
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "Hack" "InconsolataGo" ]; })
+      source-code-pro
+      (nerdfonts.override { fonts = [ "FiraCode" "Hack" "InconsolataGo" "SourceCodePro" ]; })
       tree
       fd
     ];
