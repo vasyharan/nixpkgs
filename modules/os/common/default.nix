@@ -47,7 +47,7 @@
   };
 
   fonts = {
-    enableFontDir = true;
+    fontDir.enable = true;
   };
 
   home-manager.useGlobalPkgs = true;

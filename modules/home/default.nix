@@ -2,6 +2,7 @@
   imports = [ ./zsh ./tmux ./vim ];
 
   home.home = {
+    stateVersion = "22.05";
     sessionVariables = {
       EDITOR = "vim";
     };
