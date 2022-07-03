@@ -40,9 +40,11 @@
       exa
       bat
       tldr
+      kitty
     ];
 
     variables = {
+      TERMINFO_DIRS = "${pkgs.kitty.terminfo.outPath}/share/terminfo";
     };
   };
 

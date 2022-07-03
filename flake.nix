@@ -1,16 +1,18 @@
 {
   description = "vasyharan's nix configuration";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    /* nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable"; */
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-22.05-darwin";
+    nixpkgs-unstable.url = github:nixos/nixpkgs/nixpkgs-unstable;
     flake-utils.url = "github:numtide/flake-utils";
 
     darwin = {
       url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
   outputs = inputs@{ self, nixpkgs, darwin, home-manager, flake-utils, ... }:
