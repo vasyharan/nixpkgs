@@ -14,7 +14,16 @@
     };
     packages = with pkgs; [
       source-code-pro
-      (nerdfonts.override { fonts = [ "FiraCode" "Hack" "InconsolataGo" "SourceCodePro" ]; })
+      fira-code
+      inconsolata
+      (nerdfonts.override { fonts = [ "FiraCode" "Inconsolata" "SourceCodePro" ]; })
+
+      coreutils
+      ripgrep
+      jq
+      gnupg
+      exa
+      bat
       tree
       fd
     ];

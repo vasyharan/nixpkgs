@@ -28,18 +28,6 @@
 
   environment = {
     systemPackages = with pkgs; [
-      zsh
-      tmux
-      neovim
-      coreutils
-      git
-      fzf
-      ripgrep
-      jq
-      gnupg
-      exa
-      bat
-      tldr
       kitty
     ];
 
