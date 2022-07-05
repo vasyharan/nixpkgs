@@ -61,7 +61,8 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "key_code": "f13"
+                                        "key_code": "f1",
+                                        "modifiers": ["shift"]
                                     }
                                 ],
                                 "type": "basic"
@@ -87,7 +88,8 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "key_code": "f13"
+                                        "key_code": "f1",
+                                        "modifiers": ["shift"]
                                     }
                                 ],
                                 "type": "basic"
