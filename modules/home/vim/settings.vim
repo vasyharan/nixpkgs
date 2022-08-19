@@ -13,7 +13,7 @@ set hlsearch                                          " hightlight search
 set smartcase                                         " case-sensitive search if any caps
 set ignorecase                                        " case-insensitive search
 set incsearch                                         " search as you type
-" set laststatus=2                                    " always show statusline
+set laststatus=3                                      " global statusline
 set scrolloff=3                                       " show context above/below cursorline
 set expandtab                                         " expand tabs to spaces
 set shiftwidth=2                                      " normal mode indentation commands use 2 spaces
