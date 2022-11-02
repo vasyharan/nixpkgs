@@ -1,8 +1,6 @@
 {
   description = "vasyharan's nix configuration";
   inputs = {
-    /* nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable"; */
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-22.05-darwin";
     nixpkgs-unstable.url = github:nixos/nixpkgs/nixpkgs-unstable;
     flake-utils.url = "github:numtide/flake-utils";
 
