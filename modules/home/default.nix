@@ -26,6 +26,7 @@
       bat
       tree
       fd
+      html-tidy
     ];
   };
 
