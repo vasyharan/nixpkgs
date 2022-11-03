@@ -2,7 +2,7 @@ local nvimtree = require('nvim-tree')
 nvimtree.setup {
   disable_netrw = false,
   view = {
-    auto_resize = true,
+    adaptive_size = true,
     side = "right",
   },
   filters = {

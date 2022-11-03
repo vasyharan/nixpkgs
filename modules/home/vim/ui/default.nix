@@ -6,12 +6,11 @@
       [
         (pluginWithCfg { plugin = vim-snazzy; file = "colorscheme"; })
         ({ plugin = NeoSolarized; })
-        /* (pluginWithCfg { plugin = oceanic-next; file = "colorscheme"; }) */
-        (pluginWithLua { plugin = lsp-status-nvim; })
         (pluginWithLua { plugin = lualine-nvim; })
         ({ plugin = telescope-fzf-native-nvim; })
         (pluginWithLua { plugin = telescope-nvim; })
         (pluginWithLua { plugin = nvim-tree-lua; file = "nvim-tree"; })
+        (pluginWithCfg { plugin = vista-vim; file = "vista"; })
       ];
   };
 }

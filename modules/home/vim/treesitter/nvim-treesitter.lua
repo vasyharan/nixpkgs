@@ -1,6 +1,9 @@
-local config = require('nvim-treesitter.configs')
+local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
+vim.fn.mkdir(parser_install_dir, "p")
+vim.opt.runtimepath:append(parser_install_dir)
 
-config.setup {
+require('nvim-treesitter.configs').setup {
+  parser_install_dir = parser_install_dir,
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = {'org'},

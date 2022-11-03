@@ -1,5 +1,4 @@
 local lspconfig = require('lspconfig')
-local lsp_status = require('lsp-status')
 local cmp_lsp = require('cmp_nvim_lsp')
 
 local function lsp_on_attach(client, bufnr) -- {{{
@@ -43,17 +42,14 @@ local function lsp_on_attach(client, bufnr) -- {{{
   -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
   -- formatting
-  if client.resolved_capabilities.document_formatting or
-    client.resolved_capabilities.document_range_formatting then
+  if client.server_capabilities.documentFormattingProvider or
+    client.server_capabilities.documentRangeFormattingProvider then
   -- if client.resolved_capabilities.document_formatting then
     vim.api.nvim_command [[augroup Format]]
     vim.api.nvim_command [[autocmd! * <buffer>]]
-    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()]]
+    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = true })]]
     vim.api.nvim_command [[augroup END]]
   end
-
-  -- require('completion').on_attach(client, bufnr)
-  require('lsp-status').on_attach(client)
 
   --protocol.SymbolKind = { }
   protocol.CompletionItemKind = { -- {{{
@@ -99,8 +95,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 
 function lspconfig_setup(server, config)
   -- Setup lspconfig.
-  local lsp_capabilities = vim.tbl_extend('keep', vim.lsp.protocol.make_client_capabilities(), lsp_status.capabilities)
-  local capabilities = cmp_lsp.update_capabilities(lsp_capabilities)
+  local capabilities = vim.tbl_extend('keep',
+    config.capabilities or {},
+    vim.lsp.protocol.make_client_capabilities(),
+    cmp_lsp.default_capabilities()
+  )
 
   lspconfig[server].setup(vim.tbl_extend('keep', config, {
     on_attach = lsp_on_attach,

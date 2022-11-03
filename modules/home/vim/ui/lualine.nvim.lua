@@ -1,5 +1,4 @@
 local lualine = require('lualine')
-local statusline = require('lsp-status/statusline')
 
 modemap = {
   ['n']    = 'No',
@@ -59,7 +58,6 @@ lualine.setup {
         sources = {"nvim_diagnostic"},
         symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
       },
-      statusline.progress,
       'encoding',
       'filetype'
     },

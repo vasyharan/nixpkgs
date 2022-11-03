@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: {
-  imports = [ ./ui ./treesitter ./lsp ./completion ./dap ];
+   imports = [ ./ui ./treesitter ./lsp ./completion /* ./dap */ ];
   home.programs.neovim = let
     inherit (lib.vimUtils ./.) readVimSection readLuaSection pluginWithLua;
   in {
@@ -27,7 +27,7 @@
         { plugin = vim-bbye; }
         { plugin = vim-speeddating; }
 
-        (pluginWithLua { plugin = orgmode; })
+        /* (pluginWithLua { plugin = orgmode; }) */
         (pluginWithLua { plugin = kommentary; })
       ];
   };
