@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: {
-  home.programs.neovim =
-    let inherit (lib.vimUtils ./.) pluginWithCfg pluginWithLua;
+  programs.neovim =
+    let pluginWithCfg = config.lib.vimUtils.pluginWithCfg;
     in {
       plugins = with pkgs.vimPlugins; [
         { plugin = cmp-nvim-lsp; }
@@ -9,7 +9,10 @@
         { plugin = cmp-cmdline; }
         { plugin = cmp-vsnip; }
         { plugin = vim-vsnip; }
-        (pluginWithLua { plugin = nvim-cmp; })
+        (pluginWithCfg {
+          plugin = nvim-cmp;
+          file = ./nvim-cmp.lua;
+        })
       ];
     };
 }

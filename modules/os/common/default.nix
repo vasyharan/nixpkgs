@@ -1,9 +1,7 @@
 { pkgs, ... }: {
   imports = [ ./options.nix ];
 
-  nixpkgs = {
-    config = { };
-  };
+  nixpkgs = { config = { }; };
 
   nix = {
     package = pkgs.nixFlakes;
@@ -17,10 +15,8 @@
       options = "--delete-older-than 30d";
     };
     settings = {
-      substituters = [
-        https://cache.nixos.org
-        https://nix-community.cachix.org
-      ];
+      substituters =
+        [ "https://cache.nixos.org" "https://nix-community.cachix.org" ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -29,17 +25,12 @@
   };
 
   environment = {
-    systemPackages = with pkgs; [
-      yq
-    ];
+    systemPackages = with pkgs; [ yq ];
 
-    variables = {
-    };
+    variables = { };
   };
 
-  fonts = {
-    fontDir.enable = true;
-  };
+  fonts = { fontDir.enable = true; };
 
   services.nix-daemon.enable = true;
   programs.zsh.enable = true;

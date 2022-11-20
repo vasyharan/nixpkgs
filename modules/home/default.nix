@@ -3,9 +3,7 @@
 
   home.home = {
     stateVersion = "22.05";
-    sessionVariables = {
-      EDITOR = "vim";
-    };
+    sessionVariables = { EDITOR = "vim"; };
     file = {
       ripgreprc = {
         source = ../../dotfiles/ripgreprc;
@@ -16,7 +14,9 @@
       source-code-pro
       fira-code
       inconsolata
-      (nerdfonts.override { fonts = [ "FiraCode" "Inconsolata" "SourceCodePro" ]; })
+      (nerdfonts.override {
+        fonts = [ "FiraCode" "Inconsolata" "SourceCodePro" ];
+      })
 
       coreutils
       ripgrep
@@ -30,9 +30,7 @@
     ];
   };
 
-  home.xdg = {
-    enable = true;
-  };
+  home.xdg = { enable = true; };
 
   home.programs = {
     fzf.enable = true;
@@ -49,22 +47,11 @@
         co = "checkout";
         cb = "checkout -b";
       };
-      ignores = [
-        "Session.vim"
-        "*.nix"
-        ".direnv/"
-        ".envrc"
-      ];
+      ignores = [ "Session.vim" "*.nix" ".direnv/" ".envrc" ];
       extraConfig = {
-        init = {
-          defaultBranch = "main";
-        };
-        delta = {
-          navigate = true;
-        };
-        help = {
-          autocorrect = 1;
-        };
+        init = { defaultBranch = "main"; };
+        delta = { navigate = true; };
+        help = { autocorrect = 1; };
       };
     };
   };
