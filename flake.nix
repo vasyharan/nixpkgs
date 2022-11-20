@@ -34,12 +34,48 @@
         specialArgs = { inherit inputs lib; };
       };
 
+    mkHomeConfig =
+      { username
+      , system ? "x86_64-linux"
+      , nixpkgs ? inputs.nixpkgs
+      , stable ? inputs.stable
+      , baseModules ? [
+          ./modules/home-manager
+          {
+            home = {
+              inherit username;
+              homeDirectory = "${homePrefix system}/${username}";
+              sessionVariables = {
+                NIX_PATH =
+                  "nixpkgs=${nixpkgs}:stable=${stable}\${NIX_PATH:+:}$NIX_PATH";
+              };
+            };
+          }
+        ]
+      , extraModules ? [ ]
+      }:
+      inputs.home-manager.lib.homeManagerConfiguration rec {
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = builtins.attrValues self.overlays;
+        };
+        extraSpecialArgs = { inherit self inputs nixpkgs; };
+        modules = baseModules ++ extraModules;
+      };
+
   in {
       darwinConfigurations = {
         ph-haran-mbp = mkDarwinConfiguration {
           system = "aarch64-darwin";
           extraModules = [
             ./profiles/work.nix
+          ];
+        };
+      };
+      homeConfigurations = {
+        web0 = mkHomeConfig {
+          system = "x86_64-linux";
+          extraModules = [
           ];
         };
       };
