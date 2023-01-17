@@ -132,3 +132,43 @@ lspconfig_setup('terraformls', {})
 lspconfig_setup('tsserver', { -- {{{
   filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
 }) -- }}}
+
+
+vim.api.nvim_create_autocmd("FileType", { -- {{{ metals
+  pattern = { "scala", "sbt" },
+  callback = function()
+    local metals = require("metals")
+    local config = metals.bare_config()
+    config.settings = {
+      useGlobalExecutable = true,
+    }
+    local capabilities = vim.tbl_extend('keep',
+      config.capabilities or {},
+      vim.lsp.protocol.make_client_capabilities(),
+      cmp_lsp.default_capabilities()
+    )
+    config.on_attach = lsp_on_attach
+    config.capabilities = capabilities
+    metals.initialize_or_attach(config)
+  end,
+  group = vim.api.nvim_create_augroup("nvim-metals", { clear = true }),
+}) -- }}}
+
+vim.api.nvim_create_autocmd("FileType", { -- {{{ jdtls
+  pattern = { "java" },
+  callback = function()
+    local jdtls = require("jdtls")
+    local capabilities = vim.tbl_extend('keep',
+      vim.lsp.protocol.make_client_capabilities(),
+      cmp_lsp.default_capabilities()
+    )
+    local config = {
+      cmd = {'jdt-language-server'},
+      root_dir = vim.fs.dirname(vim.fs.find({'.gradlew', '.git', 'mvnw'}, { upward = true })[1]),
+      capabilities = capabilities,
+      on_attach = lsp_on_attach,
+    }
+    jdtls.start_or_attach(config)
+  end,
+  group = vim.api.nvim_create_augroup("nvim-jdtls", { clear = true }),
+}) -- }}}
