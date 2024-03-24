@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   imports = [ ./zsh ./tmux ./vim ];
 
-  home.home = {
+  home = {
     stateVersion = "22.05";
     sessionVariables = {
       EDITOR = "vim";
@@ -18,6 +18,7 @@
       inconsolata
       (nerdfonts.override { fonts = [ "FiraCode" "Inconsolata" "SourceCodePro" ]; })
 
+      gcc
       coreutils
       ripgrep
       jq
@@ -30,11 +31,12 @@
     ];
   };
 
-  home.xdg = {
+  xdg = {
     enable = true;
   };
 
-  home.programs = {
+  programs = {
+    home-manager.enable = true;
     fzf.enable = true;
     direnv = {
       enable = true;

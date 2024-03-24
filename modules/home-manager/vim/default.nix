@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: {
    imports = [ ./ui ./treesitter ./lsp ./completion /* ./dap */ ];
-  home.programs.neovim = let
+  programs.neovim = let
     inherit (lib.vimUtils ./.) readVimSection readLuaSection pluginWithLua;
   in {
     enable = true;
@@ -32,7 +32,7 @@
       ];
   };
 
-  home.xdg.configFile."nvim/after/plugin/vim-speeddating.vim" = {
+  xdg.configFile."nvim/after/plugin/vim-speeddating.vim" = {
     source = ./vim-speeddating.vim;
   };
 }

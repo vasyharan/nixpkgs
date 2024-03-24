@@ -1,6 +1,7 @@
 {
   description = "vasyharan's nix configuration";
   inputs = {
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = github:nixos/nixpkgs/nixpkgs-unstable;
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -25,7 +26,7 @@
       , baseModules ? [
           home-manager.darwinModules.home-manager
           ./modules/os/darwin
-          ./modules/home
+          ./modules/home-manager
         ]
       , extraModules ? []
       }: darwinSystem {
@@ -36,15 +37,15 @@
 
     mkHomeConfig =
       { username
+      , homeDirectory
       , system ? "x86_64-linux"
       , nixpkgs ? inputs.nixpkgs
-      , stable ? inputs.stable
+      , stable ? inputs.nixpkgs-stable
       , baseModules ? [
           ./modules/home-manager
           {
             home = {
-              inherit username;
-              homeDirectory = "${homePrefix system}/${username}";
+              inherit username homeDirectory;
               sessionVariables = {
                 NIX_PATH =
                   "nixpkgs=${nixpkgs}:stable=${stable}\${NIX_PATH:+:}$NIX_PATH";
@@ -55,12 +56,14 @@
       , extraModules ? [ ]
       }:
       inputs.home-manager.lib.homeManagerConfiguration rec {
+        inherit lib;
         pkgs = import nixpkgs {
           inherit system;
-          overlays = builtins.attrValues self.overlays;
         };
         extraSpecialArgs = { inherit self inputs nixpkgs; };
-        modules = baseModules ++ extraModules;
+        modules = [ ({ ... }: { nixpkgs.overlays = [ (import ./overlay.nix) ]; }) ] 
+          ++ baseModules 
+          ++ extraModules;
       };
 
   in {
@@ -74,8 +77,11 @@
       };
       homeConfigurations = {
         web0 = mkHomeConfig {
+          username = "root";
+          homeDirectory = "/root";
           system = "x86_64-linux";
           extraModules = [
+            ./profiles/personal.nix
           ];
         };
       };

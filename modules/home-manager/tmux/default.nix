@@ -1,5 +1,4 @@
 { config, pkgs, lib, ... }: {
-  home = {
     xdg.configFile."tmux/resize-main-pane.sh" = {
       source = ./resize-main-pane.sh;
     };
@@ -16,7 +15,6 @@
       clock24 = true;
       extraConfig = readFile "tmux.conf";
     };
-  };
 }
 
 

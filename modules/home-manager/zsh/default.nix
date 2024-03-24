@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: {
-  home.home.file = {
+  home.file = {
     zsh-completion = {
       source = ../../../dotfiles/zsh/completion;
       target = ".config/zsh/completion";
@@ -10,7 +10,7 @@
     };
   };
 
-  home.programs.zsh = let
+  programs.zsh = let
     mkZshPlugin = { pkg, file ? "${pkg.pname}.plugin.zsh" }: rec {
       name = pkg.pname;
       src = pkg.src;
