@@ -23,7 +23,7 @@
       ripgrep
       jq
       gnupg
-      exa
+      eza
       bat
       tree
       fd

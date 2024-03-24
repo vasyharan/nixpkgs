@@ -41,8 +41,12 @@ for dump in $XDG_CONFIG_HOME/zsh/.zcompdump(N.mh+24); do
 done
 compinit -C
     '';
-    enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    autosuggestion = {
+      enable = true;
+    };
+    syntaxHighlighting = {
+      enable = true;
+    };
     shellAliases = {
       cat = "bat";
       g = "git";
