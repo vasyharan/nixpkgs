@@ -84,6 +84,14 @@
             ./profiles/personal.nix
           ];
         };
+        gitpod = mkHomeConfig {
+          username = "gitpod";
+          homeDirectory = "/home/gitpod";
+          system = "x86_64-linux";
+          extraModules = [
+            ./profiles/personal.nix
+          ];
+        };
       };
     } //
     inputs.flake-utils.lib.eachDefaultSystem (system:

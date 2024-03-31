@@ -48,9 +48,10 @@ compinit -C
       enable = true;
     };
     shellAliases = {
-      cat = "bat";
+      # cat = "bat";
+      # ls = "exa";
+
       g = "git";
-      ls = "exa";
       ll = "ls -l";
       la = "ls -a";
       dh = "dirs -v";
