@@ -13,21 +13,22 @@
       };
     };
     packages = with pkgs; [
-      source-code-pro
-      fira-code
-      inconsolata
-      (nerdfonts.override { fonts = [ "FiraCode" "Inconsolata" "SourceCodePro" ]; })
+      # source-code-pro
+      # fira-code
+      # inconsolata
+      # (nerdfonts.override { fonts = [ "FiraCode" "Inconsolata" "SourceCodePro" ]; })
 
-      gcc
-      coreutils
+      # gcc
+      # coreutils
+      # jq
+      # gnupg
+      # eza
+      # bat
+      # tree
+      # fd
+      # html-tidy
+
       ripgrep
-      jq
-      gnupg
-      eza
-      bat
-      tree
-      fd
-      html-tidy
     ];
   };
 
