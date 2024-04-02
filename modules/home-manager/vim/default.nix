@@ -7,6 +7,9 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    withNodeJs = false;
+    withRuby = false;
+    withPython3 = false;
     extraConfig = ''
       ${readVimSection "settings"}
       ${readLuaSection "keymap"}
