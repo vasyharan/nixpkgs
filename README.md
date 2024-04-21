@@ -1,3 +1,7 @@
 # Activate 
+
+## nix-darwin
+`nix --extra-experimental-features nix-command --extra-experimental-features flakes run nix-darwin -- switch --flake .#thinktank`
+
 ## home-manager standalone
-`nix run -v github:nix-community/home-manager -- switch --flake .#web0`
+`nix --extra-experimental-features nix-command --extra-experimental-features flakes run -v github:nix-community/home-manager -- switch --flake .#web0`

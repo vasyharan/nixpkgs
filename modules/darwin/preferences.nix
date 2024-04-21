@@ -26,4 +26,6 @@
       TrackpadThreeFingerDrag = true;
     };
   };
+
+  security.pam.enableSudoTouchIdAuth = true;
 }

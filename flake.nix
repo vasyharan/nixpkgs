@@ -23,16 +23,19 @@
 
     mkDarwinConfiguration =
       { system
+      , nixpkgs ? inputs.nixpkgs
+      , stable ? inputs.nixpkgs-stable
       , baseModules ? [
+          ./modules/darwin
           home-manager.darwinModules.home-manager
-          ./modules/os/darwin
-          ./modules/home-manager
         ]
       , extraModules ? []
       }: darwinSystem {
         inherit system;
-        modules = [ ({ config, pkgs, ... }: { nixpkgs.overlays = [ (import ./overlay.nix) ]; }) ] ++ baseModules ++ extraModules;
-        specialArgs = { inherit inputs lib; };
+        modules = [ ({ ... }: { nixpkgs.overlays = [ (import ./overlay.nix) ]; }) ]
+          ++ baseModules
+          ++ extraModules;
+        specialArgs = { inherit inputs lib nixpkgs; };
       };
 
     mkHomeConfig =
@@ -61,13 +64,19 @@
           inherit system;
         };
         extraSpecialArgs = { inherit self inputs nixpkgs; };
-        modules = [ ({ ... }: { nixpkgs.overlays = [ (import ./overlay.nix) ]; }) ] 
-          ++ baseModules 
+        modules = [ ({ ... }: { nixpkgs.overlays = [ (import ./overlay.nix) ]; }) ]
+          ++ baseModules
           ++ extraModules;
       };
 
   in {
       darwinConfigurations = {
+        thinktank = mkDarwinConfiguration {
+          system = "aarch64-darwin";
+          extraModules = [
+            ./profiles/personal.nix
+          ];
+        };
         ph-haran-mbp = mkDarwinConfiguration {
           system = "aarch64-darwin";
           extraModules = [

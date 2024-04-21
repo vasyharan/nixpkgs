@@ -1,16 +1,15 @@
-{ pkgs, ... }: {
-  imports = [ ./options.nix ];
-
-  nixpkgs = {
-    config = { };
-  };
+{ config, lib, pkgs, ... }: {
+  imports = [ ./user.nix ./preferences.nix ];
 
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
+      auto-optimise-store = true
       experimental-features = nix-command flakes
+    '' + lib.optionalString (pkgs.system == "aarch64-darwin") ''
+      extra-platforms = x86_64-darwin aarch64-darwin
     '';
     gc = {
       automatic = true;
@@ -28,25 +27,25 @@
     };
   };
 
-  environment = {
-    systemPackages = with pkgs; [
-      yq
-    ];
-
-    variables = {
-    };
+  programs.zsh.enable = true;
+  home.imports = [ ../home-manager ];
+  user = {
+    home = "/Users/${config.user.name}";
+    shell = pkgs.zsh;
   };
 
   fonts = {
     fontDir.enable = true;
+    fonts = [
+        (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Inconsolata" "SourceCodePro" ]; })
+    ];
   };
-
-  services.nix-daemon.enable = true;
-  programs.zsh.enable = true;
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
+  # Auto upgrade nix package and the daemon service.
+  services.nix-daemon.enable = true;
   # Used for backwards compatibility, please read the changelog before changing.
   system.stateVersion = 4;
 }

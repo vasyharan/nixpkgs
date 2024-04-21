@@ -17,3 +17,4 @@ in {
     home-manager.users.${config.user.name} = mkAliasDefinitions options.home;
   };
 }
+

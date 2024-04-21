@@ -1,20 +1,23 @@
-{ config, lib, pkgs, ... }: {
-  programs.git = {
-    userName = "Thirukumaran Vaseeharan";
-    userEmail = "vasyharan@gmail.com  ";
+{ pkgs, ... }: {
+  user.name = "haran";
+
+  home.programs = {
+    git = {
+      userName = "Thirukumaran Vaseeharan";
+      userEmail = "vasyharan@gmail.com  ";
+    };
+    zsh = {
+      dirHashes = {
+      };
+    };
   };
 
-  # home.programs.zsh = {
-  #   dirHashes = {
-  #   };
-  # };
+  environment = {
+    systemPackages = with pkgs; [
+    ];
 
-  # environment = {
-  #   systemPackages = with pkgs; [
-  #   ];
-
-  #   variables = {
-  #   };
-  # };
+    variables = {
+    };
+  };
 }
 
