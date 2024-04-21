@@ -74,6 +74,7 @@
         thinktank = mkDarwinConfiguration {
           system = "aarch64-darwin";
           extraModules = [
+            ./profiles/local.nix
             ./profiles/personal.nix
           ];
         };

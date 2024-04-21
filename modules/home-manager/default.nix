@@ -13,11 +13,6 @@
       };
     };
     packages = with pkgs; [
-      # source-code-pro
-      # fira-code
-      # inconsolata
-      # (nerdfonts.override { fonts = [ "FiraCode" "Inconsolata" "SourceCodePro" ]; })
-
       # gcc
       # coreutils
       # jq
