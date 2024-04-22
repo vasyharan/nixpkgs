@@ -37,7 +37,7 @@
   fonts = {
     fontDir.enable = true;
     fonts = [
-        (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Inconsolata" "SourceCodePro" ]; })
+      (pkgs.nerdfonts.override { fonts = [ "Inconsolata" "SourceCodePro" ]; })
     ];
   };
 

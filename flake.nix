@@ -15,61 +15,62 @@
     };
   };
   outputs = inputs@{ self, nixpkgs, darwin, home-manager, flake-utils, ... }:
-  let
-    lib = nixpkgs.lib.extend
-      (final: prev: (import ./lib final) // home-manager.lib);
+    let
+      lib = nixpkgs.lib.extend
+        (final: prev: (import ./lib final) // home-manager.lib);
 
-    inherit (darwin.lib) darwinSystem;
+      inherit (darwin.lib) darwinSystem;
 
-    mkDarwinConfiguration =
-      { system
-      , nixpkgs ? inputs.nixpkgs
-      , stable ? inputs.nixpkgs-stable
-      , baseModules ? [
-          ./modules/darwin
-          home-manager.darwinModules.home-manager
-        ]
-      , extraModules ? []
-      }: darwinSystem {
-        inherit system;
-        modules = [ ({ ... }: { nixpkgs.overlays = [ (import ./overlay.nix) ]; }) ]
-          ++ baseModules
-          ++ extraModules;
-        specialArgs = { inherit inputs lib nixpkgs; };
-      };
-
-    mkHomeConfig =
-      { username
-      , homeDirectory
-      , system ? "x86_64-linux"
-      , nixpkgs ? inputs.nixpkgs
-      , stable ? inputs.nixpkgs-stable
-      , baseModules ? [
-          ./modules/home-manager
-          {
-            home = {
-              inherit username homeDirectory;
-              sessionVariables = {
-                NIX_PATH =
-                  "nixpkgs=${nixpkgs}:stable=${stable}\${NIX_PATH:+:}$NIX_PATH";
-              };
-            };
-          }
-        ]
-      , extraModules ? [ ]
-      }:
-      inputs.home-manager.lib.homeManagerConfiguration rec {
-        inherit lib;
-        pkgs = import nixpkgs {
+      mkDarwinConfiguration =
+        { system
+        , nixpkgs ? inputs.nixpkgs
+        , stable ? inputs.nixpkgs-stable
+        , baseModules ? [
+            ./modules/darwin
+            home-manager.darwinModules.home-manager
+          ]
+        , extraModules ? [ ]
+        }: darwinSystem {
           inherit system;
+          modules = [ ({ ... }: { nixpkgs.overlays = [ (import ./overlay.nix) ]; }) ]
+            ++ baseModules
+            ++ extraModules;
+          specialArgs = { inherit inputs lib nixpkgs; };
         };
-        extraSpecialArgs = { inherit self inputs nixpkgs; };
-        modules = [ ({ ... }: { nixpkgs.overlays = [ (import ./overlay.nix) ]; }) ]
-          ++ baseModules
-          ++ extraModules;
-      };
 
-  in {
+      mkHomeConfig =
+        { username
+        , homeDirectory
+        , system ? "x86_64-linux"
+        , nixpkgs ? inputs.nixpkgs
+        , stable ? inputs.nixpkgs-stable
+        , baseModules ? [
+            ./modules/home-manager
+            {
+              home = {
+                inherit username homeDirectory;
+                sessionVariables = {
+                  NIX_PATH =
+                    "nixpkgs=${nixpkgs}:stable=${stable}\${NIX_PATH:+:}$NIX_PATH";
+                };
+              };
+            }
+          ]
+        , extraModules ? [ ]
+        }:
+        inputs.home-manager.lib.homeManagerConfiguration rec {
+          inherit lib;
+          pkgs = import nixpkgs {
+            inherit system;
+          };
+          extraSpecialArgs = { inherit self inputs nixpkgs; };
+          modules = [ ({ ... }: { nixpkgs.overlays = [ (import ./overlay.nix) ]; }) ]
+            ++ baseModules
+            ++ extraModules;
+        };
+
+    in
+    {
       darwinConfigurations = {
         thinktank = mkDarwinConfiguration {
           system = "aarch64-darwin";
@@ -107,8 +108,9 @@
     inputs.flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-      in {
+      in
+      {
         inherit (pkgs) devShell;
-        /* devShell = import ./shell.nix { inherit pkgs; }; */
+        formatter = pkgs.nixpkgs-fmt;
       });
 }

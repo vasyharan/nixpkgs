@@ -1,11 +1,13 @@
 { config, pkgs, lib, ... }: {
-    xdg.configFile."tmux/resize-main-pane.sh" = {
-      source = ./resize-main-pane.sh;
-    };
+  xdg.configFile."tmux/resize-main-pane.sh" = {
+    source = ./resize-main-pane.sh;
+  };
 
-    programs.tmux = let
+  programs.tmux =
+    let
       readFile = file: builtins.readFile (./. + "/${file}");
-    in {
+    in
+    {
       enable = true;
       sensibleOnTop = true;
       prefix = "S-F1";

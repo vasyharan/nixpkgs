@@ -7,8 +7,7 @@
       userEmail = "vasyharan@gmail.com  ";
     };
     zsh = {
-      dirHashes = {
-      };
+      dirHashes = { };
     };
   };
 
@@ -16,8 +15,7 @@
     systemPackages = with pkgs; [
     ];
 
-    variables = {
-    };
+    variables = { };
   };
 }
 
