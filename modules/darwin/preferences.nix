@@ -28,4 +28,5 @@
   };
 
   security.pam.enableSudoTouchIdAuth = true;
+  security.pam.enableSudoReattachAuth = true;
 }

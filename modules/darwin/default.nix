@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }: {
-  imports = [ ./user.nix ./preferences.nix ];
+  imports = [ ./pam.nix ./user.nix ./preferences.nix ];
 
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -28,11 +30,12 @@
   };
 
   programs.zsh.enable = true;
-  home.imports = [ ../home-manager ];
   user = {
     home = "/Users/${config.user.name}";
     shell = pkgs.zsh;
   };
+
+  home.imports = [ ../home-manager ];
 
   fonts = {
     fontDir.enable = true;
@@ -40,9 +43,6 @@
       (pkgs.nerdfonts.override { fonts = [ "Inconsolata" "SourceCodePro" ]; })
     ];
   };
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
