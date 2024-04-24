@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  nix --extra-experimental-features nix-command \
+      --extra-experimental-features flakes \
+      run -v github:LnL7/nix-darwin -- \
+      $*
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  nix --extra-experimental-features nix-command \
+      --extra-experimental-features flakes \
+      run -v github:nix-community/home-manager -- \
+      $*
+  echo "linux"
+else
+  echo "unhandled os: ${OSTYPE}" && exit 1
+fi
