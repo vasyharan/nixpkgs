@@ -35,13 +35,25 @@
     shell = pkgs.zsh;
   };
 
-  home.imports = [ ../home-manager ];
-
   fonts = {
     fontDir.enable = true;
     fonts = [
       (pkgs.nerdfonts.override { fonts = [ "Inconsolata" "SourceCodePro" ]; })
     ];
+  };
+
+  home = {
+    imports = [ ../home-manager ];
+    xdg.configFile = {
+      karabiner = {
+        source = ../../dotfiles/karabiner;
+        recursive = true;
+      };
+      kitty = {
+        source = ../../dotfiles/kitty;
+        recursive = true;
+      };
+    };
   };
 
   # Auto upgrade nix package and the daemon service.
