@@ -13,16 +13,6 @@
       };
     };
     packages = with pkgs; [
-      # gcc
-      # coreutils
-      # jq
-      # gnupg
-      # eza
-      # bat
-      # tree
-      # fd
-      # html-tidy
-
       ripgrep
     ];
   };
@@ -49,8 +39,6 @@
       };
       ignores = [
         "Session.vim"
-        "*.nix"
-        ".direnv/"
         ".envrc"
       ];
       extraConfig = {
