@@ -18,6 +18,7 @@
       options = "--delete-older-than 30d";
     };
     settings = {
+      trusted-users = [ "root" config.user.name ];
       substituters = [
         https://cache.nixos.org
         https://nix-community.cachix.org
