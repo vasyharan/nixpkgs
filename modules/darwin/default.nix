@@ -30,7 +30,9 @@
     };
   };
 
+  services.karabiner-elements.enable = true;
   programs.zsh.enable = true;
+
   user = {
     home = "/Users/${config.user.name}";
     shell = pkgs.zsh;
@@ -39,7 +41,7 @@
   fonts = {
     fontDir.enable = true;
     fonts = [
-      (pkgs.nerdfonts.override { fonts = [ "Inconsolata" "SourceCodePro" ]; })
+      (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ]; })
     ];
   };
 
@@ -50,12 +52,9 @@
         source = ../../dotfiles/karabiner;
         recursive = true;
       };
-      kitty = {
-        source = ../../dotfiles/kitty;
-        recursive = true;
-      };
     };
   };
+
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
