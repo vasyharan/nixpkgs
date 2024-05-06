@@ -75,9 +75,10 @@
         thinktank = mkDarwinConfiguration {
           system = "aarch64-darwin";
           extraModules = [
-            ./profiles/terminal.nix
             ./profiles/better-utils.nix
             ./profiles/personal.nix
+            ./profiles/kitty.nix
+            ./profiles/vscode.nix
           ];
         };
         ph-haran-mbp = mkDarwinConfiguration {

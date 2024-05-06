@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }: {
   imports = [ ./pam.nix ./user.nix ./preferences.nix ];
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -29,6 +27,10 @@
       ];
     };
   };
+
+  nixpkgs.config.allowUnfree = true;
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 
   services.karabiner-elements.enable = true;
   programs.zsh.enable = true;
