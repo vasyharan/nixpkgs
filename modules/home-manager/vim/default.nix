@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: {
-  imports = [ ./ui ./treesitter ./lsp ./completion /* ./dap */ ];
+  imports = [ ./ui ./treesitter ./lsp ./completion ./dap ];
   programs.neovim =
     let
       inherit (lib.vimUtils ./.) readVimSection readLuaSection pluginWithLua;
@@ -34,6 +34,9 @@
 
           /* (pluginWithLua { plugin = orgmode; }) */
           (pluginWithLua { plugin = kommentary; })
+
+          (pluginWithLua { plugin = go-nvim; file = "go-nvim"; })
+          { plugin = rustaceanvim; }
         ];
     };
 

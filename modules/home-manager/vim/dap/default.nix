@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: {
-  home.programs.neovim =
+  programs.neovim =
     let
       inherit (lib.vimUtils ./.) pluginWithCfg pluginWithLua;
     in
@@ -9,7 +9,6 @@
           (pluginWithLua { plugin = nvim-dap; })
           { plugin = nvim-dap-ui; }
           { plugin = nvim-dap-virtual-text; }
-          (pluginWithLua { plugin = nvim-dap-go; })
         ];
     };
 }
