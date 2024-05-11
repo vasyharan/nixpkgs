@@ -73,7 +73,7 @@
     {
       darwinConfigurations = {
         thinktank = mkDarwinConfiguration {
-          system = "aarch64-darwin";
+          system = "x86_64-darwin";
           extraModules = [
             ./profiles/better-utils.nix
             ./profiles/personal.nix
