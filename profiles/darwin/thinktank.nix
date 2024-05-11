@@ -13,8 +13,11 @@
         settings = {
           update_check_interval = 0;
           sync_to_monitor = "no";
-          window_padding_width = 2;
+          window_padding_width = 4;
           macos_option_as_alt = true;
+          macos_show_window_title_in = "menubar";
+          macos_window_resizable = true;
+          hide_window_decorations = "titlebar-only";
         };
       };
       vscode = {
