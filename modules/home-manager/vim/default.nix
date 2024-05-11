@@ -36,7 +36,6 @@
           (pluginWithLua { plugin = kommentary; })
 
           (pluginWithLua { plugin = go-nvim; file = "go-nvim"; })
-          { plugin = rustaceanvim; }
         ];
     };
 

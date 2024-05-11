@@ -126,7 +126,7 @@ lspconfig_setup('pyright', { -- {{{
     },
   },
 }) -- }}}
--- lspconfig_setup('rust_analyzer', {})
+lspconfig_setup('rust_analyzer', {})
 lspconfig_setup('svelte', {})
 lspconfig_setup('terraformls', {})
 lspconfig_setup('tsserver', { -- {{{
