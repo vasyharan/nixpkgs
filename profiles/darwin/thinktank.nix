@@ -25,6 +25,7 @@
           vscodevim.vim
           golang.go
           bbenoist.nix
+          rust-lang.rust-analyzer
         ];
         userSettings = {
           "workbench.colorTheme" = "Solarized Dark";
