@@ -26,6 +26,11 @@
       Clicking = true;
       TrackpadThreeFingerDrag = true;
     };
+
+    finder = {
+      FXPreferredViewStyle = "Nlsv"; # List View
+      AppleShowAllExtensions = true;
+    };
   };
 
   security.pam.enableSudoTouchIdAuth = true;
