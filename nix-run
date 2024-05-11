@@ -12,8 +12,7 @@ case "$OSTYPE" in
     echo "unhandled os: ${OSTYPE}" && exit 1
 esac
 
-
-echo "nix run ${NIX_RUN} ${@}"
+set -x
 nix --extra-experimental-features nix-command \
     --extra-experimental-features flakes \
     run ${NIX_RUN} "$@"
