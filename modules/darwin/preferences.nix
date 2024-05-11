@@ -11,6 +11,7 @@
       mru-spaces = false;
       orientation = "left";
       tilesize = 36;
+      show-recents = false;
       # showhidden = true;
     };
 
