@@ -75,16 +75,7 @@
         thinktank = mkDarwinConfiguration {
           system = "x86_64-darwin";
           extraModules = [
-            ./profiles/better-utils.nix
-            ./profiles/personal.nix
-            ./profiles/kitty.nix
-            ./profiles/vscode.nix
-          ];
-        };
-        ph-haran-mbp = mkDarwinConfiguration {
-          system = "aarch64-darwin";
-          extraModules = [
-            ./profiles/work.nix
+            ./profiles/darwin/thinktank.nix
           ];
         };
       };
@@ -94,7 +85,7 @@
           homeDirectory = "/root";
           system = "x86_64-linux";
           extraModules = [
-            ./profiles/personal.nix
+            ./profiles/home/modules/git.personal.nix
           ];
         };
         gitpod = mkHomeConfig {
@@ -102,7 +93,7 @@
           homeDirectory = "/home/gitpod";
           system = "x86_64-linux";
           extraModules = [
-            ./profiles/personal.nix
+            ./profiles/home/modules/git.personal.nix
           ];
         };
       };
