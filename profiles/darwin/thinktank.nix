@@ -42,6 +42,7 @@
       bat
       tree
       fd
+      jq
     ];
   };
 
