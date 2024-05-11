@@ -6,7 +6,7 @@
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
-      auto-optimise-store = true
+      auto-optimise-store = false # https://github.com/NixOS/nix/issues/7273
       experimental-features = nix-command flakes
     '' + lib.optionalString (pkgs.system == "aarch64-darwin") ''
       extra-platforms = x86_64-darwin aarch64-darwin
