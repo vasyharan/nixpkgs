@@ -29,12 +29,14 @@
           golang.go
           bbenoist.nix
           rust-lang.rust-analyzer
+          vadimcn.vscode-lldb
         ];
         userSettings = {
           "workbench.colorTheme" = "Solarized Dark";
           "editor.fontFamily" = "'Inconsolata Nerd Font Mono', monospace";
-          "editor.fontSize" = 14;
-          "terminal.integrated.fontSize" = 14;
+          "editor.fontSize" = 13;
+          "terminal.integrated.fontSize" = 13;
+          "editor.minimap.enabled" = false;
         };
       };
     };
