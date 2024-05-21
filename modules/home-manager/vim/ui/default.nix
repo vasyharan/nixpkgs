@@ -6,8 +6,8 @@
     {
       plugins = with pkgs.vimPlugins;
         [
-          (pluginWithCfg { plugin = vim-snazzy; file = "colorscheme"; })
-          ({ plugin = NeoSolarized; })
+          (pluginWithCfg { plugin = gruvbox-nvim; file = "colorscheme"; })
+
           (pluginWithLua { plugin = lualine-nvim; })
           ({ plugin = telescope-fzf-native-nvim; })
           (pluginWithLua { plugin = telescope-nvim; })

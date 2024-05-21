@@ -14,6 +14,7 @@
             p.java
             p.javascript
             p.lua
+            p.markdown
             p.nix
             p.org
             p.python

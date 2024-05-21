@@ -33,6 +33,12 @@ keymap { 'n', ',oo', "<cmd>lua require('telescope.builtin').lsp_document_symbols
 keymap { 'n', ',t', "<cmd>NvimTreeToggle<cr>" }
 keymap { 'n', ',T', "<cmd>NvimTreeFindFile<cr>" }
 
+keymap { 'n', ',xx', '<cmd>Trouble diagnostics toggle<cr>' }
+keymap { 'n', ',xX', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>' }
+keymap { 'n', ',xq', '<cmd>Trouble qflist toggle<cr>' }
+keymap { 'n', ',xl', '<cmd>Trouble loclist toggle<cr>' }
+
+
 keymap { 'n', 'vv', '<cmd>vertical split<cr>' }
 keymap { 'n', 'vs', '<cmd>split<cr>' }
 

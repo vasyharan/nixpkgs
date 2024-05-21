@@ -16,17 +16,16 @@ in
       meta.homepage = "https://github.com/connorholyday/vim-snazzy";
     };
 
-    # nvim-dap-go = vimUtils.buildVimPlugin rec {
-    #   pname = "nvim-dap-go";
-    #   version = "84c109ab994e241feee1d195f2e7c23834101a93";
-    #   src = fetchFromGitHub {
-    #     owner = "leoluz";
-    #     repo = "nvim-dap-go";
-    #     rev = version;
-    #     sha256 = "sha256-x+xoYECsrXPB+pR1ljvjwZvC7rYkzyRm886xoxJP+D4=";
-    #   };
-    #   meta.homepage = "https://github.com/leoluz/nvim-dap-go";
-    # };
-
+    trouble-nvim-dev = vimUtils.buildVimPlugin rec {
+      pname = "trouble.nvim";
+      version = "2024-05-21-dev"; # dev branch
+      src = fetchFromGitHub {
+        owner = "folke";
+        repo = "trouble.nvim";
+        rev = "e2185bf6e63ef9bd75f1819f43846e2b0f10953b";
+        sha256 = "sha256-VXF+2ZnWAybMpK1dPK2ZhB0clEh/ntp68zklJFOKQlw=";
+      };
+      meta.homepage = "https://github.com/folke/trouble.nvim/";
+    };
   };
 }

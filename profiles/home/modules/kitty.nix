@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   programs.kitty = {
     enable = true;
-    theme = "Snazzy";
+    theme = "Gruvbox Dark";
     font = {
       name = "SauceCodePro Nerd Font Mono";
       size = 11.0;

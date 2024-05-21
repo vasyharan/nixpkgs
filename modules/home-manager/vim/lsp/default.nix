@@ -10,7 +10,7 @@
           { plugin = nvim-jdtls; }
           { plugin = nvim-metals; }
           { plugin = nvim-web-devicons; }
-          { plugin = trouble-nvim; }
+          (pluginWithLua { plugin = trouble-nvim-dev; file = "nvim-trouble"; })
         ];
     };
 }

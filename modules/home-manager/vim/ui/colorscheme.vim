@@ -19,5 +19,4 @@ else
   set background=dark
 endif
 
-" colorscheme OceanicNext
-colorscheme snazzy
+colorscheme gruvbox
