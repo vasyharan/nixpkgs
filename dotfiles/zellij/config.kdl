@@ -123,15 +123,18 @@ keybinds clear-defaults=true {
     }
     tmux {
         bind "[" { SwitchToMode "Scroll"; }
-        // bind "F1" { ToggleTab; SwitchToMode "Normal"; }
+        bind "F1" { SwitchToMode "Normal"; }
         bind "Ctrl b" { Write 2; SwitchToMode "Normal"; }
         bind "v" { NewPane; SwitchToMode "Normal"; }
+        bind "w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
+        bind "a" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
         // bind "c" { NewTab; SwitchToMode "Normal"; }
 
         bind "," { SwitchToMode "RenameTab"; }
-        bind "p" { GoToPreviousTab; SwitchToMode "Normal"; }
-        bind "n" { GoToNextTab; SwitchToMode "Normal"; }
+        // bind "p" { GoToPreviousTab; SwitchToMode "Normal"; }
+        // bind "n" { GoToNextTab; SwitchToMode "Normal"; }
+
         bind "Left" { MoveFocus "Left"; SwitchToMode "Normal"; }
         bind "Right" { MoveFocus "Right"; SwitchToMode "Normal"; }
         bind "Down" { MoveFocus "Down"; SwitchToMode "Normal"; }
@@ -141,8 +144,10 @@ keybinds clear-defaults=true {
         bind "j" { MoveFocus "Down"; SwitchToMode "Normal"; }
         bind "k" { MoveFocus "Up"; SwitchToMode "Normal"; }
         bind "o" { FocusNextPane; }
-        bind "d" { Detach; }
+
         bind "Space" { NextSwapLayout; }
+
+        bind "d" { Detach; }
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
 
         bind "Ctrl o" {
