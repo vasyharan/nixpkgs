@@ -1,10 +1,10 @@
 { pkgs, ... }: {
   user.name = "haran";
   home = {
-    imports = [ 
-    ../home/modules/git.personal.nix 
-    ../home/modules/kitty.nix
-    ../home/modules/vscode.nix
+    imports = [
+      ../home/modules/git.personal.nix
+      ../home/modules/kitty.nix
+      ../home/modules/vscode.nix
     ];
   };
 

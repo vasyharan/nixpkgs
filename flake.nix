@@ -4,6 +4,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = github:nixos/nixpkgs/nixpkgs-unstable;
     flake-utils.url = "github:numtide/flake-utils";
+    zjstatus.url = "github:dj95/zjstatus/v0.14.1";
 
     darwin = {
       url = "github:lnl7/nix-darwin";
@@ -32,9 +33,18 @@
         , extraModules ? [ ]
         }: darwinSystem {
           inherit system;
-          modules = [ ({ ... }: { nixpkgs.overlays = [ (import ./overlay.nix) ]; }) ]
-            ++ baseModules
-            ++ extraModules;
+          modules = [
+            ({ ... }: {
+              nixpkgs.overlays = [
+                (import ./overlay.nix)
+                (final: prev: {
+                  zjstatus = inputs.zjstatus.packages.${system}.default;
+                })
+              ];
+            })
+          ]
+          ++ baseModules
+          ++ extraModules;
           specialArgs = { inherit inputs lib nixpkgs; };
         };
 
