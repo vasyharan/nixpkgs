@@ -30,6 +30,7 @@
 
         mode_normal        "#[bg=blue] #[fg=blue]"
         mode_tmux          "#[bg=green]  "
+        mode_locked        "#[bg=red]  "
         mode_default_to_mode "tmux"
 
         tab_active               "{fullscreen_indicator}{sync_indicator}{floating_indicator}"
