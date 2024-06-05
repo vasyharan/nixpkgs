@@ -35,6 +35,7 @@ keymap { 'n', ',T', "<cmd>NvimTreeFindFile<cr>" }
 
 keymap { 'n', ',xx', '<cmd>Trouble diagnostics toggle<cr>' }
 keymap { 'n', ',xX', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>' }
+keymap { 'n', ',xe', '<cmd>Trouble diagnostics filter.severity=vim.diagnostic.severity.ERROR<cr>' }
 keymap { 'n', ',xq', '<cmd>Trouble qflist toggle<cr>' }
 keymap { 'n', ',xl', '<cmd>Trouble loclist toggle<cr>' }
 
