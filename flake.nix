@@ -1,7 +1,7 @@
 {
   description = "vasyharan's nix configuration";
   inputs = {
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = github:nixos/nixpkgs/nixpkgs-unstable;
     flake-utils.url = "github:numtide/flake-utils";
     zjstatus.url = "github:dj95/zjstatus/v0.14.1";
@@ -24,7 +24,8 @@
 
       mkDarwinConfiguration =
         { system
-        , nixpkgs ? inputs.nixpkgs
+        , nixpkgs ? inputs.nixpkgs-unstable
+        , unstable ? inputs.nixpkgs-unstable
         , stable ? inputs.nixpkgs-stable
         , baseModules ? [
             ./modules/darwin
