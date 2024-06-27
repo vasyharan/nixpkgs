@@ -89,6 +89,12 @@
             ./profiles/darwin/thinktank.nix
           ];
         };
+        metronome = mkDarwinConfiguration {
+          system = "aarch64-darwin";
+          extraModules = [
+            ./profiles/darwin/metronome.nix
+          ];
+        };
       };
       homeConfigurations = {
         web0 = mkHomeConfig {
