@@ -7,10 +7,13 @@
       plugins = with pkgs.vimPlugins;
         [
           (pluginWithLua { plugin = nvim-lspconfig; })
-          { plugin = nvim-jdtls; }
-          { plugin = nvim-metals; }
           { plugin = nvim-web-devicons; }
           (pluginWithLua { plugin = trouble-nvim-dev; file = "nvim-trouble"; })
+
+          # { plugin = copilot-vim; }
+          # { plugin = nvim-jdtls; }
+          # { plugin = nvim-metals; }
+          # (pluginWithLua { plugin = go-nvim; file = "go-nvim"; })
         ];
     };
 }

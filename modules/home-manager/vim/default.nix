@@ -25,6 +25,7 @@
           { plugin = vim-surround; }
           { plugin = vim-obsession; }
           { plugin = vim-easy-align; }
+          (pluginWithLua { plugin = kommentary; })
 
           { plugin = vim-visualstar; }
           { plugin = vim-swap; }
@@ -32,11 +33,7 @@
           { plugin = vim-bbye; }
           { plugin = vim-speeddating; }
 
-          /* (pluginWithLua { plugin = orgmode; }) */
-          (pluginWithLua { plugin = kommentary; })
-          { plugin = copilot-vim; }
-
-          (pluginWithLua { plugin = go-nvim; file = "go-nvim"; })
+          # (pluginWithLua { plugin = orgmode; })
         ];
     };
 

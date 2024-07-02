@@ -15,6 +15,7 @@
       macos_window_resizable = true;
       hide_window_decorations = "titlebar-only";
       clear_all_shortcuts = true;
+      enable_audio_bell = false;
     };
     keybindings = {
       "cmd+c" = "copy_to_clipboard";
