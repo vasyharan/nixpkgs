@@ -1,6 +1,6 @@
 self: super:
 let
-  inherit (super) lib fetchFromGitHub vimPlugins vimUtils;
+  inherit (super) lib stdenv fetchurl fetchFromGitHub buildGoModule vimPlugins vimUtils;
 in
 {
   vimPlugins = vimPlugins // {
@@ -27,5 +27,32 @@ in
       };
       meta.homepage = "https://github.com/folke/trouble.nvim/";
     };
+  };
+
+  substrate-tools = stdenv.mkDerivation rec {
+    pname = "substrate-tools";
+    version = "2024.06";
+    src = fetchurl {
+      url = "https://src-bin.com/substrate-${version}-darwin-arm64.tar.gz";
+      hash = "sha256-20ecfVxV55POu+NDbITj1TVKIGTW6I9QeKVDuZLi9yI=";
+    };
+    sourceRoot = ".";
+    installPhase = ''
+      runHook preInstall
+      install -m755 -D substrate-${version}-darwin-arm64/bin/substrate $out/bin/substrate
+      runHook postInstall
+    '';
+  };
+
+  quikstrate = buildGoModule rec {
+    pname = "quikstrate";
+    version = "1.0.22";
+    src = fetchFromGitHub {
+      owner = "Metronome-Industries";
+      repo = "quikstrate";
+      rev = version;
+      sha256 = "sha256-uVYfpZ7erOYgqyfFs2rJP1f+tNaravWyZtezeTDo5bU=";
+    };
+    vendorHash = "sha256-3iHBi9t9yUa+z7AM08zMVi7ReSXPPK/inGpmacmahvA=";
   };
 }

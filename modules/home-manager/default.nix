@@ -129,9 +129,7 @@
         co = "checkout";
         cb = "checkout -b";
       };
-      ignores = [
-        "Session.vim"
-      ];
+      ignores = [];
       extraConfig = {
         init = {
           defaultBranch = "main";
