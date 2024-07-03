@@ -2,7 +2,7 @@
   description = "vasyharan's nix configuration";
   inputs = {
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = github:nixos/nixpkgs/nixpkgs-unstable;
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     zjstatus.url = "github:dj95/zjstatus/v0.14.1";
 
