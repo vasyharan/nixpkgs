@@ -31,6 +31,7 @@
 
       tilt
       _1password
+      yubikey-manager
 
       eza
       bat
