@@ -50,9 +50,6 @@
         enable = true;
       };
       shellAliases = {
-        # cat = "bat";
-        # ls = "exa";
-
         g = "git";
         ll = "ls -l";
         la = "ls -a";

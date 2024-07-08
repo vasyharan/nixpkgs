@@ -21,8 +21,9 @@
     enable = true;
   };
 
-  xdg.configFile = let 
-    zjstatus-bar = ''pane size=1 borderless=true {
+  xdg.configFile =
+    let
+      zjstatus-bar = ''pane size=1 borderless=true {
       plugin location="file:${pkgs.zjstatus}/bin/zjstatus.wasm" {
         format_left  "#[bg=blue,fg=black]#[bg=blue,fg=black] {session} {mode} #[fg=default,bg=default]{swap_layout} {tabs}"
         format_right ""
@@ -39,11 +40,12 @@
         tab_floating_indicator   "󰉈 "
       }
     }'';
-  in {
-    "zellij/config.kdl".source = ../../dotfiles/zellij/config.kdl;
+    in
+    {
+      "zellij/config.kdl".source = ../../dotfiles/zellij/config.kdl;
 
-    "zellij/layouts/default.swap.kdl".source = ../../dotfiles/zellij/swap-layouts.kdl;
-    "zellij/layouts/default.kdl".text = ''layout {
+      "zellij/layouts/default.swap.kdl".source = ../../dotfiles/zellij/swap-layouts.kdl;
+      "zellij/layouts/default.kdl".text = ''layout {
         default_tab_template {
           ${zjstatus-bar}
           children
@@ -60,8 +62,8 @@
         }
       }'';
 
-    "zellij/layouts/editor.swap.kdl".source = ../../dotfiles/zellij/swap-layouts.kdl;
-    "zellij/layouts/editor.kdl".text = ''layout {
+      "zellij/layouts/editor.swap.kdl".source = ../../dotfiles/zellij/swap-layouts.kdl;
+      "zellij/layouts/editor.kdl".text = ''layout {
         tab focus=true {
           ${zjstatus-bar}
           pane split_direction="vertical" {
@@ -81,8 +83,8 @@
         }
       }'';
 
-    "zellij/layouts/rust.swap.kdl".source = ../../dotfiles/zellij/swap-layouts.kdl;
-    "zellij/layouts/rust.kdl".text = ''layout {
+      "zellij/layouts/rust.swap.kdl".source = ../../dotfiles/zellij/swap-layouts.kdl;
+      "zellij/layouts/rust.kdl".text = ''layout {
         tab focus=true {
           ${zjstatus-bar}
           pane split_direction="vertical" {
@@ -107,7 +109,7 @@
           }
         }
       }'';
-  };
+    };
 
   programs = {
     home-manager.enable = true;
@@ -129,7 +131,7 @@
         co = "checkout";
         cb = "checkout -b";
       };
-      ignores = [];
+      ignores = [ ];
       extraConfig = {
         init = {
           defaultBranch = "main";

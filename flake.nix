@@ -1,26 +1,37 @@
 {
   description = "vasyharan's nix configuration";
   inputs = {
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-    zjstatus.url = "github:dj95/zjstatus/v0.14.1";
-
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     darwin = {
       url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zjstatus = {
+      url = "github:dj95/zjstatus/v0.14.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixpkgs-metronome = {
+      url = "path:/Users/haran/src/metronome/nixpkgs-metronome";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
   };
-  outputs = inputs@{ self, nixpkgs, darwin, home-manager, flake-utils, ... }:
+  outputs = { self, flake-parts, nixpkgs, darwin, home-manager, ... } @inputs:
     let
       lib = nixpkgs.lib.extend
         (final: prev: (import ./lib final) // home-manager.lib);
 
       inherit (darwin.lib) darwinSystem;
+
+      mkDefaultOverlays = { system }: [
+        (import ./overlay.nix)
+        (final: prev: { zjstatus = inputs.zjstatus.packages.${system}.default; })
+      ];
 
       mkDarwinConfiguration =
         { system
@@ -32,20 +43,12 @@
             home-manager.darwinModules.home-manager
           ]
         , extraModules ? [ ]
+        , extraOverlays ? [ ]
         }: darwinSystem {
           inherit system;
-          modules = [
-            ({ ... }: {
-              nixpkgs.overlays = [
-                (import ./overlay.nix)
-                (final: prev: {
-                  zjstatus = inputs.zjstatus.packages.${system}.default;
-                })
-              ];
-            })
-          ]
-          ++ baseModules
-          ++ extraModules;
+          modules = [ ({ ... }: { nixpkgs.overlays = mkDefaultOverlays { inherit system; } ++ extraOverlays; }) ]
+            ++ baseModules
+            ++ extraModules;
           specialArgs = { inherit inputs lib nixpkgs; };
         };
 
@@ -68,6 +71,7 @@
             }
           ]
         , extraModules ? [ ]
+        , extraOverlays ? [ ]
         }:
         inputs.home-manager.lib.homeManagerConfiguration rec {
           inherit lib;
@@ -75,52 +79,57 @@
             inherit system;
           };
           extraSpecialArgs = { inherit self inputs nixpkgs; };
-          modules = [ ({ ... }: { nixpkgs.overlays = [ (import ./overlay.nix) ]; }) ]
+          modules = [ ({ ... }: { nixpkgs.overlays = mkDefaultOverlays { inherit system; } ++ extraOverlays; }) ]
             ++ baseModules
             ++ extraModules;
         };
-
     in
-    {
-      darwinConfigurations = {
-        thinktank = mkDarwinConfiguration {
-          system = "x86_64-darwin";
-          extraModules = [
-            ./profiles/darwin/thinktank.nix
-          ];
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
+      flake = {
+        darwinConfigurations = {
+          thinktank = mkDarwinConfiguration {
+            system = "x86_64-darwin";
+            extraModules = [
+              ./profiles/darwin/thinktank.nix
+            ];
+          };
+          metronome = mkDarwinConfiguration {
+            system = "aarch64-darwin";
+            extraModules = [
+              ./profiles/darwin/metronome.nix
+            ];
+            extraOverlays = [
+              inputs.nixpkgs-metronome.overlays.default
+            ];
+          };
         };
-        metronome = mkDarwinConfiguration {
-          system = "aarch64-darwin";
-          extraModules = [
-            ./profiles/darwin/metronome.nix
-          ];
+        homeConfigurations = {
+          web0 = mkHomeConfig {
+            username = "root";
+            homeDirectory = "/root";
+            system = "x86_64-linux";
+            extraModules = [
+              ./profiles/home/modules/git.personal.nix
+            ];
+          };
+          gitpod = mkHomeConfig {
+            username = "gitpod";
+            homeDirectory = "/home/gitpod";
+            system = "x86_64-linux";
+            extraModules = [
+              ./profiles/home/modules/git.personal.nix
+            ];
+          };
         };
       };
-      homeConfigurations = {
-        web0 = mkHomeConfig {
-          username = "root";
-          homeDirectory = "/root";
-          system = "x86_64-linux";
-          extraModules = [
-            ./profiles/home/modules/git.personal.nix
-          ];
+      perSystem = { config, system, ... }:
+        let
+          pkgs = import inputs.nixpkgs { inherit system; };
+        in
+        {
+          formatter = pkgs.nixpkgs-fmt;
         };
-        gitpod = mkHomeConfig {
-          username = "gitpod";
-          homeDirectory = "/home/gitpod";
-          system = "x86_64-linux";
-          extraModules = [
-            ./profiles/home/modules/git.personal.nix
-          ];
-        };
-      };
-    } //
-    inputs.flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
-        inherit (pkgs) devShell;
-        formatter = pkgs.nixpkgs-fmt;
-      });
+    };
+
 }

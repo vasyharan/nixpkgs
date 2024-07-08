@@ -10,14 +10,25 @@
 
   environment = {
     systemPackages = with pkgs; [
+      # aws
       awscli2
       aws-iam-authenticator
-      substrate-tools
+      amazon-ecr-credential-helper
+      substrate
       quikstrate
+
       confluent-cli
       kcat
-      kubectl
+
       nodejs_18
+      terraform
+      terraform-ls
+      rover
+      dbmate
+
+      kubectl
+      k9s
+
       tilt
       _1password
 
@@ -35,6 +46,13 @@
       cat = "bat";
       ls = "exa";
       find = "fd";
+      tf = "terraform";
+      k = "kubectl";
+    };
+    dirHashes = {
+      devenv = "$HOME/src/metronome/local-development";
+      substrate = "$HOME/src/metronome/metronome-substrate";
+      kafka = "$HOME/src/metronome/metronome-kafka";
     };
     sessionVariables = {
       SUBSTRATE_ROOT = "$HOME/src/metronome/metronome-substrate";
