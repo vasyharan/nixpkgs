@@ -51,9 +51,15 @@
       k = "kubectl";
     };
     dirHashes = {
+      metronome = "$HOME/src/metronome";
+
       devenv = "$HOME/src/metronome/local-development";
-      substrate = "$HOME/src/metronome/metronome-substrate";
+      frontend = "$HOME/src/metronome/metronome-frontend";
+      gqlgw = "$HOME/src/metronome/graphql-gateway";
+      gqlrs = "$HOME/src/metronome/graphql-resolvers";
       kafka = "$HOME/src/metronome/metronome-kafka";
+      mri = "$HOME/src/metronome/metering-rating-invoicing-service";
+      substrate = "$HOME/src/metronome/metronome-substrate";
     };
     sessionVariables = {
       SUBSTRATE_ROOT = "$HOME/src/metronome/metronome-substrate";
