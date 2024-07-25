@@ -17,22 +17,16 @@
       substrate
       quikstrate
 
-      confluent-cli
-      kcat
-
-      nodejs_18
-      terraform
-      terraform-ls
-      rover
-      dbmate
-
+      # k8s
       kubectl
+      kubectx
       k9s
 
-      tilt
       _1password
       yubikey-manager
+      graphite-cli
 
+      gh
       eza
       bat
       tree
@@ -49,20 +43,31 @@
       find = "fd";
       tf = "terraform";
       k = "kubectl";
+      dc = "docker compose";
+      qs = "quikstrate";
     };
+    initExtra = ''
+      aws-login() {
+        eval $(quikstrate credentials)
+      }
+      aws-assume() {
+        eval $(quikstrate assume -e $1 -d $2)
+      }
+    '';
     dirHashes = {
-      metronome = "$HOME/src/metronome";
+      work = "$HOME/src/metronome";
 
       devenv = "$HOME/src/metronome/local-development";
-      frontend = "$HOME/src/metronome/metronome-frontend";
-      gqlgw = "$HOME/src/metronome/graphql-gateway";
-      gqlrs = "$HOME/src/metronome/graphql-resolvers";
-      kafka = "$HOME/src/metronome/metronome-kafka";
+      charts = "$HOME/src/metronome/charts";
+      frontend = "$HOME/src/metronome/frontend";
+      gateway = "$HOME/src/metronome/graphql-gateway";
+      resolvers = "$HOME/src/metronome/graphql-resolvers";
+      kafka = "$HOME/src/metronome/kafka";
       mri = "$HOME/src/metronome/metering-rating-invoicing-service";
-      substrate = "$HOME/src/metronome/metronome-substrate";
+      substrate = "$HOME/src/metronome/substrate";
     };
     sessionVariables = {
-      SUBSTRATE_ROOT = "$HOME/src/metronome/metronome-substrate";
+      SUBSTRATE_ROOT = "$HOME/src/metronome/substrate";
       SUBSTRATE_FEATURES = "IgnoreMacOSKeychain";
     };
   };

@@ -22,10 +22,10 @@
       enable = true;
       dotDir = ".config/zsh";
       initExtraFirst = ''
-        ${builtins.readFile(./. + "/settings-first.zsh")}
+        ${builtins.readFile(./settings-first.zsh)}
       '';
       initExtra = ''
-        ${builtins.readFile(./. + "/settings.zsh")}
+        ${builtins.readFile(./settings.zsh)}
       '';
       history = {
         size = 10000;

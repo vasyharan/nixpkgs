@@ -5,8 +5,8 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10" # solarized dark
 # }}}
 
-PATH=~/.npm-packages/bin:$PATH
-NODE_PATH="~/.npm-packages/lib/node_modules"
+# PATH=~/.npm-packages/bin:$PATH
+# NODE_PATH="~/.npm-packages/lib/node_modules"
 
 # highlight styles {{{
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES;
@@ -15,7 +15,7 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 # }}}
 
 # ripgrep {{{
-RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 # }}}
 
 # {{{ fzf

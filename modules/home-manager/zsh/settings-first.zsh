@@ -14,7 +14,7 @@ bindkey '^x^e' edit-command-line
 fancy-ctrl-z () {
   emulate -LR zsh
   if [[ $#BUFFER -eq 0 ]]; then
-    BUFFER="fg"
+    BUFFER=" fg"
     zle accept-line -w
   else
     zle push-input

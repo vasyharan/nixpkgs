@@ -16,8 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-metronome = {
-      url = "path:/Users/haran/src/metronome/nixpkgs-metronome";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "path:/Users/haran/src/metronome/nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
   };

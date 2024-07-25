@@ -28,11 +28,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1719845423,
-        "narHash": "sha256-ZLHDmWAsHQQKnmfyhYSHJDlt8Wfjv6SQhl2qek42O7A=",
+        "lastModified": 1720469887,
+        "narHash": "sha256-BwPsGQ/EMqCreUc5j9Efj+wx13AjREtuHhbyHZygcE4=",
         "owner": "lnl7",
         "repo": "nix-darwin",
-        "rev": "ec12b88104d6c117871fad55e931addac4626756",
+        "rev": "fabc653517106127e2ed435fb52e7e8854354428",
         "type": "github"
       },
       "original": {
@@ -84,11 +84,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1719992360,
-        "narHash": "sha256-SRq0ZRkqagqpMGVf4z9q9CIWRbPYjO7FTqSJyWh7nes=",
+        "lastModified": 1720470846,
+        "narHash": "sha256-7ftA4Bv5KfH4QdTRxqe8/Hz2YTKo+7IQ9n7vbNWgv28=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "36e2f9da91ce8b63a549a47688ae60d47c50de4b",
+        "rev": "2fb5c1e0a17bc6059fa09dc411a43d75f35bb192",
         "type": "github"
       },
       "original": {
@@ -99,11 +99,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1720087678,
-        "narHash": "sha256-uOhYJU3ldDKXYV+mFaXcPtyjq/UIMh/6SCuoVNU9rxM=",
-        "owner": "nixos",
+        "lastModified": 1720469149,
+        "narHash": "sha256-2xjtp1OkT1umAQroPKACKXpxhAZ88b7m6yusslRj66c=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1afc5440469f94e7ed26e8648820971b102afdc3",
+        "rev": "2e7e2a1d49a3d0763d2eab13ba529165ed37cd13",
         "type": "github"
       },
       "original": {
@@ -130,19 +130,17 @@
         "flake-parts": [
           "flake-parts"
         ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-terraform": "nixpkgs-terraform"
       },
       "locked": {
-        "lastModified": 1720195606,
-        "narHash": "sha256-UXzUGydT+CR9UIX/MEXXFcmEU1lqXTYXIuJhQ1I9iCI=",
-        "path": "/Users/haran/src/metronome/nixpkgs-metronome",
+        "lastModified": 1720555838,
+        "narHash": "sha256-LKd5MwuMw9zqrnU8ZbGnWKc2iw34EYVPBrev/q8np5Y=",
+        "path": "/Users/haran/src/metronome/nixpkgs",
         "type": "path"
       },
       "original": {
-        "path": "/Users/haran/src/metronome/nixpkgs-metronome",
+        "path": "/Users/haran/src/metronome/nixpkgs",
         "type": "path"
       }
     },
@@ -159,6 +157,22 @@
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "efd23a1c9ae8c574e2ca923c2b2dc336797f4cc4",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1720040158,
+        "narHash": "sha256-BPnGgNTNdBZyeXAfijcwqUeCa8exW/SkpMO5Spq5DKg=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "88264572652f9f0f1fceb2605a17a447c2f54849",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
