@@ -123,6 +123,7 @@ lspconfig_setup('pyright', { -- {{{
 lspconfig_setup('rust_analyzer', {})
 lspconfig_setup('svelte', {})
 lspconfig_setup('terraformls', {})
+lspconfig_setup('jsonnet_ls', {})
 lspconfig_setup('tsserver', { -- {{{
   filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
 }) -- }}}

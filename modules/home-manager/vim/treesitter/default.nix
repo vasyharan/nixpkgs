@@ -13,6 +13,7 @@
             p.hcl
             p.java
             p.javascript
+            p.jsonnet
             p.lua
             p.markdown
             p.nix
