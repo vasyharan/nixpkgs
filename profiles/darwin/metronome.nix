@@ -54,9 +54,6 @@
       aws-assume() {
         eval $(quikstrate assume -e $1 -d $2)
       }
-      random-hex() {
-        openssl rand -hex ''${1:-4} | head -c ''${1:-4} | tr 'A-F' 'a-f'
-      }
     '';
     dirHashes = {
       work = "$HOME/src/metronome";

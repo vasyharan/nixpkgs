@@ -101,3 +101,11 @@ unset -f bind-git-helper
 # }}}
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+random-hex() {
+  openssl rand -hex ''${1:-4} | head -c ''${1:-4} | tr 'A-F' 'a-f'
+}
+
+random-uuid() {
+  uuidgen | tr '[:upper:]' '[:lower:]' | tr -d '\n'
+}
