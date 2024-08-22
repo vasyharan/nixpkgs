@@ -144,6 +144,22 @@
         "type": "path"
       }
     },
+    "nixpkgs-stable": {
+      "locked": {
+        "lastModified": 1724196396,
+        "narHash": "sha256-4GoGPErR0RM5r5x+LMnzZvxTdn11lCRO+z8wP3K3PyU=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "1c5f849214c6c03c47e684622306aad181c107a4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-24.05-darwin",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-terraform": {
       "locked": {
         "lastModified": 1694032533,
@@ -183,6 +199,7 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-metronome": "nixpkgs-metronome",
+        "nixpkgs-stable": "nixpkgs-stable",
         "zjstatus": "zjstatus"
       }
     },
@@ -231,7 +248,7 @@
         "crane": "crane",
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-stable"
         ],
         "rust-overlay": "rust-overlay"
       },

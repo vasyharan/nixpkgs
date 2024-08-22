@@ -2,6 +2,7 @@
   description = "vasyharan's nix configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
     flake-parts.url = "github:hercules-ci/flake-parts";
     darwin = {
       url = "github:lnl7/nix-darwin";
@@ -13,7 +14,7 @@
     };
     zjstatus = {
       url = "github:dj95/zjstatus/v0.14.1";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     nixpkgs-metronome = {
       url = "path:/Users/haran/src/metronome/nixpkgs";
