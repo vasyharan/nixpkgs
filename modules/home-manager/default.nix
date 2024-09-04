@@ -40,7 +40,7 @@
         co = "checkout";
         cb = "checkout -b";
       };
-      ignores = [".DS_Store"];
+      ignores = [".DS_Store" "tf.plan"];
       extraConfig = {
         init = {
           defaultBranch = "main";
