@@ -48,12 +48,8 @@
       qs = "quikstrate";
     };
     initExtra = ''
-      aws-login() {
-        eval $(quikstrate credentials)
-      }
-      aws-assume() {
-        eval $(quikstrate assume -e $1 -d $2)
-      }
+      aws-login() { eval $(quikstrate credentials); }
+      aws-assume() { eval $(quikstrate assume -e $1 -d $2); }
     '';
     dirHashes = {
       work = "$HOME/src/metronome";
