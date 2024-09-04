@@ -18,5 +18,3 @@
       extraConfig = readFile "tmux.conf";
     };
 }
-
-
