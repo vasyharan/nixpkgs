@@ -20,6 +20,8 @@
       "editor.minimap.enabled" = false;
       "extensions.ignoreRecommendations" = true;
       "github.copilot.editor.enableAutoCompletions" = true;
+      "vim.foldfix" = true;
+      "vim.useSystemClipboard" = true;
     };
   };
 }
