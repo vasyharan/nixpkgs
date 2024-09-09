@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }: {
   programs.zellij = {
-      enable = true;
-    };
+    enable = true;
+  };
 
   xdg.configFile =
     let

@@ -34,6 +34,8 @@
       fd
       jq
       yq
+      mcfly
+      mcfly-fzf
     ];
   };
 

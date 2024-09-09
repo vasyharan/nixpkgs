@@ -102,6 +102,13 @@ unset -f bind-git-helper
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+if type mcfly > /dev/null; then
+  eval "$(mcfly init zsh)"
+  if type mcfly-fzf > /dev/null; then
+    eval "$(mcfly-fzf init zsh)"
+  fi
+fi
+
 random-hex() {
   openssl rand -hex ''${1:-4} | head -c ''${1:-4} | tr 'A-F' 'a-f'
 }

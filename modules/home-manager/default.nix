@@ -16,10 +16,10 @@
   };
 
   xdg.configFile = {
-      "ripgrep/ripgreprc" = {
-        source = ../../dotfiles/ripgreprc;
-      };
+    "ripgrep/ripgreprc" = {
+      source = ../../dotfiles/ripgreprc;
     };
+  };
 
   programs = {
     home-manager.enable = true;
@@ -40,7 +40,7 @@
         co = "checkout";
         cb = "checkout -b";
       };
-      ignores = [".DS_Store" "tf.plan"];
+      ignores = [ ".DS_Store" "tf.plan" ];
       extraConfig = {
         init = {
           defaultBranch = "main";
