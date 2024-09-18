@@ -63,10 +63,10 @@
       resolvers = "$HOME/src/metronome/graphql-resolvers";
       kafka = "$HOME/src/metronome/kafka";
       mri = "$HOME/src/metronome/metering-rating-invoicing-service";
-      substrate = "$HOME/src/metronome/substrate";
+      substrate = "$HOME/src/metronome/metronome-substrate";
     };
     sessionVariables = {
-      SUBSTRATE_ROOT = "$HOME/src/metronome/substrate";
+      SUBSTRATE_ROOT = "$HOME/src/metronome/metronome-substrate";
       SUBSTRATE_FEATURES = "IgnoreMacOSKeychain";
     };
   };
