@@ -51,7 +51,8 @@
     };
     initExtra = ''
       aws-login() { eval $(quikstrate credentials); }
-      aws-assume() { eval $(quikstrate assume -e $1 -d $2); }
+      aws-assume() { aws-login; eval $(quikstrate assume -e $1 -d $2); }
+      kubectx() { aws-assume $1 $2; command kubectx $1-$2; }
     '';
     dirHashes = {
       work = "$HOME/src/metronome";
