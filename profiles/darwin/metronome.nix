@@ -50,9 +50,33 @@
       qs = "quikstrate";
     };
     initExtra = ''
-      aws-login() { eval $(quikstrate credentials); }
-      aws-assume() { aws-login; eval $(quikstrate assume -e $1 -d $2); }
-      kubectx() { aws-assume $1 $2; command kubectx $1-$2; }
+      aws-login() {
+        set -o pipefail
+        credentials=$(quikstrate credentials)
+        if [[ $? -ne 0 ]]; then
+          exit 1;
+        fi
+        eval $credentials
+      }
+      aws-assume() {
+        set -o pipefail
+        aws-login
+        credentials=$(quikstrate assume -e $1 -d $2)
+        if [[ $? -ne 0 ]]; then
+          exit 1;
+        fi
+        eval $credentials
+      }
+      kubectx() {
+        declare -A cluster_to_project
+        cluster_to_project=( [rating]=ingest )
+        project=''${cluster_to_project[$2]}
+        if [[ -z $project ]]; then
+          project=$2
+        fi
+        aws-assume $1 $project
+        command kubectx $1-$2
+      }
     '';
     dirHashes = {
       work = "$HOME/src/metronome";
@@ -72,4 +96,3 @@
     };
   };
 }
-
