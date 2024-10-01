@@ -124,7 +124,7 @@ lspconfig_setup('rust_analyzer', {})
 lspconfig_setup('svelte', {})
 lspconfig_setup('terraformls', {})
 lspconfig_setup('jsonnet_ls', {})
-lspconfig_setup('tsserver', { -- {{{
+lspconfig_setup('ts_ls', { -- {{{
   filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
 }) -- }}}
 

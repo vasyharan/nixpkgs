@@ -31,6 +31,8 @@
       mkDefaultOverlays = { system }: [
         (import ./overlay.nix)
         (final: prev: { zjstatus = inputs.zjstatus.packages.${system}.default; })
+        # https://github.com/LnL7/nix-darwin/issues/1041
+        (final: prev: { inherit (inputs.nixpkgs-stable.legacyPackages.${system}) karabiner-elements; })
       ];
 
       mkDarwinConfiguration =
