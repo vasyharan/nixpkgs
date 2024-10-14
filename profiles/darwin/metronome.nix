@@ -19,6 +19,7 @@
 
       # k8s
       kubectl
+      argo-rollouts
       kubectx
       k9s
 
