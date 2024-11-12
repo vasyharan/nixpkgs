@@ -4,7 +4,6 @@
     imports = [
       ../home/modules/git.metronome.nix
       ../home/modules/kitty.nix
-      ../home/modules/vscode.nix
     ];
   };
 
