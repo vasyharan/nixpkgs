@@ -134,8 +134,8 @@
         "nixpkgs-terraform": "nixpkgs-terraform"
       },
       "locked": {
-        "lastModified": 1725475525,
-        "narHash": "sha256-zTmGgWREjZUaFiot1Nkfdfohl2+r4I65JFBA2xUJVMo=",
+        "lastModified": 1728915326,
+        "narHash": "sha256-Yo732OqlcnOZkPUrjkUFQQSxP323KcrAIU+1RgHufQE=",
         "path": "/Users/haran/src/metronome/nixpkgs",
         "type": "path"
       },

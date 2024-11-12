@@ -27,6 +27,7 @@
       yubikey-manager
       graphite-cli
       colima
+      postgresql
 
       gh
       eza
@@ -70,13 +71,23 @@
       }
       kubectx() {
         declare -A cluster_to_project
-        cluster_to_project=( [rating]=ingest )
+        cluster_to_project=( [rating]=ingest [dagster]=lakehouse )
         project=''${cluster_to_project[$2]}
         if [[ -z $project ]]; then
           project=$2
         fi
         aws-assume $1 $project
         command kubectx $1-$2
+      }
+      grafana-wtf() {
+        if [[ -z $GRAFANA_TOKEN ]]; then
+          echo "Please set GRAFANA_TOKEN environment variable"
+          return 1
+        fi
+        docker run --rm -it -v /tmp/grafana-wtf:/root/.cache \
+          --env GRAFANA_URL="https://g-614e59cd65.grafana-workspace.us-west-2.amazonaws.com" \
+          --env GRAFANA_TOKEN="''${GRAFANA_TOKEN}" \
+          ghcr.io/grafana-toolbox/grafana-wtf grafana-wtf $@
       }
     '';
     dirHashes = {
@@ -92,7 +103,7 @@
       substrate = "$HOME/src/metronome/metronome-substrate";
     };
     sessionVariables = {
-      SUBSTRATE_ROOT = "$HOME/src/metronome/metronome-substrate";
+      SUBSTRATE_ROOT = "$HOME/src/metronome/substrate";
       SUBSTRATE_FEATURES = "IgnoreMacOSKeychain";
     };
   };
