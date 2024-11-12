@@ -22,7 +22,7 @@
       kubectx
       k9s
 
-      _1password
+      _1password-cli
       yubikey-manager
       graphite-cli
       colima
