@@ -6,11 +6,7 @@
       mkhl.direnv
       eamodio.gitlens
       vscodevim.vim
-      golang.go
-      bbenoist.nix
-      rust-lang.rust-analyzer
       jdinhlife.gruvbox
-      github.copilot
     ];
     userSettings = {
       "workbench.colorTheme" = "Gruvbox Dark Medium";
