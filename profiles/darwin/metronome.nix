@@ -49,6 +49,8 @@
       k = "kubectl";
       dc = "docker compose";
       qs = "quikstrate";
+      kns = "kubens";
+      kctx = "kubectx";
     };
     initExtra = ''
       aws-login() {
