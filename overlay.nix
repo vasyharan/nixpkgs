@@ -14,12 +14,12 @@ self: super: {
 
     trouble-nvim-dev = super.vimUtils.buildVimPlugin rec {
       pname = "trouble.nvim";
-      version = "2024-05-21-dev"; # dev branch
+      version = "v3.6.0";
       src = super.fetchFromGitHub {
         owner = "folke";
         repo = "trouble.nvim";
-        rev = "e2185bf6e63ef9bd75f1819f43846e2b0f10953b";
-        hash = "sha256-VXF+2ZnWAybMpK1dPK2ZhB0clEh/ntp68zklJFOKQlw=";
+        rev = "v3.6.0";
+        hash = "sha256-OZRHGcCDgdby5CfR8M0zYkmdxIr5QGaiD/VLeNxAt3s=";
       };
       meta.homepage = "https://github.com/folke/trouble.nvim/";
     };

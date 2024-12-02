@@ -22,7 +22,7 @@ local function lsp_on_attach(client, bufnr) -- {{{
   keymap { 'n', 'gi', "<cmd>lua require'telescope.builtin'.lsp_implementations()<cr>" }
   keymap { 'n', 'gR', '<cmd>lua vim.lsp.buf.rename()<cr>', silent = true }
   keymap { 'n', 'g.', '<cmd>lua vim.lsp.buf.code_action()<cr>', silent = true }
-  keymap { 'n', 'gr', '<cmd>Trouble lsp toggle focus=false win.position=right<cr>' }
+  keymap { 'n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references()<cr>", silent = true }
   keymap { 'n', 'ge', '<cmd>lua vim.diagnostic.open_float()<cr>', silent = true }
   keymap { 'n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<CR>', silent = true }
   keymap { 'n', ']e', '<cmd>lua vim.diagnostic.goto_next()<CR>', silent = true }
