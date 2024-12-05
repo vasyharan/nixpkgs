@@ -1,6 +1,8 @@
 local lspconfig = require('lspconfig')
 local cmp_lsp = require('cmp_nvim_lsp')
 
+vim.lsp.set_log_level("off")
+
 local function lsp_on_attach(client, bufnr) -- {{{
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
