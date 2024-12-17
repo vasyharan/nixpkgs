@@ -117,5 +117,9 @@ random-uuid() {
   uuidgen | tr '[:upper:]' '[:lower:]' | tr -d '\n'
 }
 
-export ZELLIJ_AUTO_EXIT=true
-eval "$(zellij setup --generate-auto-start zsh)"
+if type zellij > /dev/null; then
+  if [[ -o interactive && "${TERM_PROGRAM}" != "Apple_Terminal" ]]; then
+    export ZELLIJ_AUTO_EXIT=true
+    eval "$(zellij setup --generate-auto-start zsh)"
+  fi
+fi
