@@ -42,7 +42,7 @@
 
   fonts = {
     packages = [
-      (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ]; })
+      pkgs.nerd-fonts.sauce-code-pro
     ];
   };
 
