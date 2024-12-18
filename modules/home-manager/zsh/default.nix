@@ -1,12 +1,13 @@
 { config, pkgs, lib, ... }: {
   home.file = {
-    zsh-completion = {
-      source = ../../../dotfiles/zsh/completion;
-      target = ".config/zsh/completion";
-    };
     p10k = {
       source = ../../../dotfiles/zsh/p10k.zsh;
       target = ".p10k.zsh";
+    };
+    zsh-completion = {
+      source = ../../../dotfiles/zsh/completion;
+      target = ".config/zsh/completion";
+      recursive = true;
     };
   };
 
