@@ -6,13 +6,13 @@
       ../home/modules/kitty.nix
     ];
     home.file = {
-      bazel-completion = { 
+      bazel-completion = {
         source = "${pkgs.bazel_7}/share/zsh/site-functions/_bazel";
-        target = ".config/zsh/vendor-completion/_bazel";
+        target = ".config/zsh/completion/_bazel";
       };
-      gh-completion = { 
-        source = "${pkgs.gh}/share/zsh/site-functions/_gh"; 
-        target = ".config/zsh/vendor-completion/_gh"; 
+      gh-completion = {
+        source = "${pkgs.gh}/share/zsh/site-functions/_gh";
+        target = ".config/zsh/completion/_gh";
       };
     };
   };
@@ -35,8 +35,8 @@
       _1password-cli
       yubikey-manager
       graphite-cli
-      colima
       postgresql
+      bazel_7
 
       gh
       eza

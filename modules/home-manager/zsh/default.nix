@@ -4,10 +4,13 @@
       source = ../../../dotfiles/zsh/p10k.zsh;
       target = ".p10k.zsh";
     };
-    zsh-completion = {
-      source = ../../../dotfiles/zsh/completion;
-      target = ".config/zsh/completion";
-      recursive = true;
+    docker-completion = {
+      source = ../../../dotfiles/zsh/completion/_docker;
+      target = ".config/zsh/completion/_docker";
+    };
+    docker-compose-completion = {
+      source = ../../../dotfiles/zsh/completion/_docker-compose;
+      target = ".config/zsh/completion/_docker-compose";
     };
   };
 
