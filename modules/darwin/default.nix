@@ -53,12 +53,13 @@
         source = ../../dotfiles/karabiner;
         recursive = true;
       };
+      ghostty = {
+        source = ../../dotfiles/ghostty;
+        recursive = true;
+      };
     };
   };
 
-
-  # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
-  # Used for backwards compatibility, please read the changelog before changing.
   system.stateVersion = 4;
 }
