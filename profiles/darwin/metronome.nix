@@ -66,7 +66,7 @@
         set -o pipefail
         credentials=$(quikstrate credentials)
         if [[ $? -ne 0 ]]; then
-          exit 1;
+          return 1;
         fi
         eval $credentials
       }
@@ -75,7 +75,7 @@
         aws-login
         credentials=$(quikstrate assume -e $1 -d $2)
         if [[ $? -ne 0 ]]; then
-          exit 1;
+          return 1;
         fi
         eval $credentials
       }
