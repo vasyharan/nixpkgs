@@ -144,15 +144,20 @@ keybinds clear-defaults=true {
         bind "8" { GoToTab 8; SwitchToMode "Normal"; }
         bind "9" { GoToTab 9; SwitchToMode "Normal"; }
 
-        bind "Left" { MoveFocus "Left"; SwitchToMode "Normal"; }
-        bind "Right" { MoveFocus "Right"; SwitchToMode "Normal"; }
-        bind "Down" { MoveFocus "Down"; SwitchToMode "Normal"; }
-        bind "Up" { MoveFocus "Up"; SwitchToMode "Normal"; }
+        // bind "Left" { MoveFocus "Left"; SwitchToMode "Normal"; }
+        // bind "Right" { MoveFocus "Right"; SwitchToMode "Normal"; }
+        // bind "Down" { MoveFocus "Down"; SwitchToMode "Normal"; }
+        // bind "Up" { MoveFocus "Up"; SwitchToMode "Normal"; }
         bind "h" { MoveFocus "Left"; SwitchToMode "Normal"; }
         bind "l" { MoveFocus "Right"; SwitchToMode "Normal"; }
         bind "j" { MoveFocus "Down"; SwitchToMode "Normal"; }
         bind "k" { MoveFocus "Up"; SwitchToMode "Normal"; }
-        bind "o" { FocusNextPane; }
+        // bind "o" { FocusNextPane; }
+        // bind "p" { MovePaneBackwards; }
+        bind "H" "Left" { MovePane "Left"; SwitchToMode "Normal"; }
+        bind "J" "Down" { MovePane "Down"; SwitchToMode "Normal"; }
+        bind "K" "Up" { MovePane "Up"; SwitchToMode "Normal"; }
+        bind "L" "Right" { MovePane "Right"; SwitchToMode "Normal"; }
 
         bind "Space" { NextSwapLayout; }
 

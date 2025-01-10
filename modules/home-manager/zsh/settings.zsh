@@ -118,7 +118,7 @@ random-uuid() {
 }
 
 if type zellij > /dev/null; then
-  if [[ -o interactive && "${TERM_PROGRAM}" != "Apple_Terminal" ]]; then
+  if [[ -o interactive && "${TERM_PROGRAM}" == "ghostty" ]]; then
     export ZELLIJ_AUTO_EXIT=true
     eval "$(zellij setup --generate-auto-start zsh)"
   fi
