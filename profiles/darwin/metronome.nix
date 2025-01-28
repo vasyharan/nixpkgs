@@ -35,7 +35,6 @@
       yubikey-manager
       graphite-cli
       postgresql
-      bazel_7
 
       gh
       eza
