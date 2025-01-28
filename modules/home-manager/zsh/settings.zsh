@@ -81,6 +81,31 @@ _gs() {
   cut -d: -f1
 }
 
+_gp() {
+  is_in_git_repo || return
+  gh_template='
+    {{- range . -}}
+        {{- $stateColor := "green" -}}
+        {{- if eq .isDraft true -}}
+            {{- $stateColor = "white+dh" -}}
+        {{- else if eq .state "CLOSED" -}}
+            {{- $stateColor = "red" -}}
+        {{- else if eq .state "MERGED" -}}
+            {{- $stateColor = "magenta" -}}
+        {{- end -}}
+
+        {{- tablerow
+            (printf "#%v" .number | autocolor $stateColor)
+            (truncate 90 (.title | autocolor "white+h"))
+            (truncate 60 (.headRefName | autocolor "white+h"))
+            (printf "%15s" (timeago .updatedAt) | autocolor "white+d")
+        -}}
+    {{- end -}}
+  '
+  gh pr list -A "@me" --json "number,title,state,headRefName,updatedAt,isDraft" --template $gh_template |
+    fzf-down --ansi --preview 'gh pr diff {1}' --bind 'enter:execute(gh pr view -w {1})+abort'
+}
+
 join-lines() {
   local item
   while read item; do
@@ -96,7 +121,7 @@ bind-git-helper() {
     eval "bindkey '^g^$c' fzf-g$c-widget"
   done
 }
-bind-git-helper f b t r h s
+bind-git-helper f b t r h s p
 unset -f bind-git-helper
 # }}}
 
