@@ -114,6 +114,7 @@
     sessionVariables = {
       SUBSTRATE_ROOT = "$HOME/src/metronome/substrate";
       SUBSTRATE_FEATURES = "IgnoreMacOSKeychain";
+      PATH = "$HOME/src/metronome/mkcat/bin:$PATH";
     };
   };
 }
