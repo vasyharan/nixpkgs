@@ -34,5 +34,5 @@
   };
 
   security.pam.enableSudoTouchIdAuth = true;
-  security.pam.enableSudoReattachAuth = true;
+  # security.pam.enableSudoReattachAuth = true;
 }
