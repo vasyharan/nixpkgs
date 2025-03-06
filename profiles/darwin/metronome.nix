@@ -43,8 +43,6 @@
       fd
       jq
       yq
-      mcfly
-      mcfly-fzf
     ];
   };
 
@@ -52,7 +50,6 @@
     shellAliases = {
       cat = "bat";
       ls = "exa";
-      find = "fd";
       tf = "terraform";
       k = "kubectl";
       dc = "docker compose";

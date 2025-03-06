@@ -67,7 +67,6 @@
       };
       plugins = with pkgs; [
         (mkZshPlugin { pkg = zsh-powerlevel10k; file = "powerlevel10k.zsh-theme"; })
-        (mkZshPlugin { pkg = zsh-z; })
       ];
     };
 }
