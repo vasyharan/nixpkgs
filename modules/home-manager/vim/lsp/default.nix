@@ -8,7 +8,7 @@
         [
           (pluginWithLua { plugin = nvim-lspconfig; })
           { plugin = nvim-web-devicons; }
-          (pluginWithLua { plugin = trouble-nvim-dev; file = "nvim-trouble"; })
+          (pluginWithLua { plugin = trouble-nvim; file = "nvim-trouble"; })
 
           # { plugin = copilot-vim; }
           # { plugin = nvim-jdtls; }

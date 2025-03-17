@@ -19,6 +19,7 @@
     nixpkgs-metronome = {
       url = "path:/Users/haran/src/metronome/nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = { self, flake-parts, nixpkgs, darwin, home-manager, ... } @inputs:

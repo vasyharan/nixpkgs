@@ -17,7 +17,7 @@
             p.lua
             p.markdown
             p.nix
-            p.org
+            # p.org
             p.python
             p.rust
             p.scala
