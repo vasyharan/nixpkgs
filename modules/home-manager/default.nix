@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ./zsh ./tmux ./vim ./zellij ];
+  imports = [ ./zsh ./vim ./zellij ];
 
   home = {
     stateVersion = "22.05";
