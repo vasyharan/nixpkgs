@@ -25,6 +25,8 @@
       substrate
       quikstrate
 
+      inetutils
+
       # k8s
       kubectl
       argo-rollouts
@@ -65,6 +67,11 @@
           return 1;
         fi
         eval $credentials
+      }
+      aws-logout() {
+        unset AWS_ACCESS_KEY_ID
+        unset AWS_SECRET_ACCESS_KEY
+        unset AWS_SESSION_TOKEN
       }
       aws-assume() {
         set -o pipefail
