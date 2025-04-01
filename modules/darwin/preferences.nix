@@ -9,9 +9,10 @@
     dock = {
       autohide = true;
       mru-spaces = false;
-      orientation = "left";
+      orientation = "right";
       tilesize = 36;
       show-recents = false;
+      appswitcher-all-displays = true;
       # showhidden = true;
     };
 
