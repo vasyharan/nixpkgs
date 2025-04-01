@@ -83,13 +83,6 @@
         eval $credentials
       }
       kubectx() {
-        declare -A cluster_to_project
-        cluster_to_project=( [rating]=ingest [dagster]=lakehouse )
-        project=''${cluster_to_project[$2]}
-        if [[ -z $project ]]; then
-          project=$2
-        fi
-        aws-assume $1 $project
         command kubectx $1-$2
       }
       grafana-wtf() {
