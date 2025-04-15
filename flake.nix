@@ -47,8 +47,8 @@
 
       mkDarwinConfiguration =
         { system
-        , nixpkgs ? inputs.nixpkgs-unstable
-        , unstable ? inputs.nixpkgs-unstable
+        , nixpkgs ? inputs.nixpkgs
+        , unstable ? inputs.nixpkgs
         , stable ? inputs.nixpkgs-stable
         , baseModules ? [
             ./modules/darwin

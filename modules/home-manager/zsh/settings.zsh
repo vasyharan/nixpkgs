@@ -126,6 +126,7 @@ unset -f bind-git-helper
 # }}}
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.config/zsh/secrets ]] || source ~/.config/zsh/secrets
 
 random-hex() {
   openssl rand -hex ''${1:-4} | head -c ''${1:-4} | tr 'A-F' 'a-f'
