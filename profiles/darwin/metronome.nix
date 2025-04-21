@@ -83,6 +83,13 @@
         eval $credentials
       }
       kubectx() {
+        declare -A cluster_to_project
+        cluster_to_project=( [rating]=ingest [dagster]=lakehouse )
+        project=''${cluster_to_project[$2]}
+        if [[ -z $project ]]; then
+          project=$2
+        fi
+        aws-assume $1 $project
         command kubectx $1-$2
       }
       grafana-wtf() {
@@ -94,6 +101,25 @@
           --env GRAFANA_URL="https://g-614e59cd65.grafana-workspace.us-west-2.amazonaws.com" \
           --env GRAFANA_TOKEN="''${GRAFANA_TOKEN}" \
           ghcr.io/grafana-toolbox/grafana-wtf grafana-wtf $@
+      }
+      migrations() {
+        local SERVICES=("postgres-metadata" "postgres-main" "postgres-notifications" "postgres-aggregates" "postgres-aggregates-0000" "postgres-aggregates-0001")
+        case $1 in
+          up)
+            shift
+            set -x
+            docker compose --project-directory "$HOME/src/metronome/migrations" up -d --wait "''${SERVICES[@]}" "$@"
+            ;;
+          down)
+            shift
+            set -x
+            docker compose --project-directory "$HOME/src/metronome/migrations" down "''${SERVICES[@]}" "$@"
+            ;;
+          *)
+            echo "Usage: migrations [up|down] [extra services]"
+            return 1
+            ;;
+        esac
       }
     '';
     dirHashes = {
