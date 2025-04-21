@@ -399,3 +399,5 @@ pane_frames false
 // Default: false
 //
 // disable_session_metadata true
+
+show_startup_tips false
