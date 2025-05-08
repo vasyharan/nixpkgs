@@ -28,6 +28,7 @@
       inetutils
 
       # k8s
+      colima
       kubectl
       argo-rollouts
       kubectx
