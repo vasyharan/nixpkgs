@@ -61,4 +61,5 @@
   };
 
   system.stateVersion = 4;
+  system.primaryUser = config.user.name;
 }

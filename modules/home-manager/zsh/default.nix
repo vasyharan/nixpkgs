@@ -25,12 +25,14 @@
     {
       enable = true;
       dotDir = ".config/zsh";
-      initExtraFirst = ''
-        ${builtins.readFile(./settings-first.zsh)}
-      '';
-      initExtra = ''
-        ${builtins.readFile(./settings.zsh)}
-      '';
+      initContent = lib.mkMerge [
+        (lib.mkBefore ''
+          ${builtins.readFile(./settings-first.zsh)}
+        '')
+        (lib.mkAfter ''
+          ${builtins.readFile(./settings.zsh)}
+        '')
+      ];
       history = {
         size = 10000;
         save = 10000;

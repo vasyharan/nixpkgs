@@ -60,7 +60,7 @@
       kns = "kubens";
       kctx = "kubectx";
     };
-    initExtra = ''
+    initContent = ''
       aws-login() {
         set -o pipefail
         credentials=$(quikstrate credentials)
