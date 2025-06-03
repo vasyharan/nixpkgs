@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zjstatus = {
-      url = "github:dj95/zjstatus/v0.19.1";
+      url = "github:dj95/zjstatus/v0.20.2";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     nixpkgs-metronome = {
