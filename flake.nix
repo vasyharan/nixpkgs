@@ -2,7 +2,7 @@
   description = "vasyharan's nix configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
     flake-parts.url = "github:hercules-ci/flake-parts";
     darwin = {
       url = "github:lnl7/nix-darwin";
