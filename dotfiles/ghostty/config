@@ -2,3 +2,5 @@
 font-size = 11
 
 theme = GruvboxDark
+
+keybind = shift+enter=text:\n
