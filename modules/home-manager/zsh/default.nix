@@ -1,12 +1,8 @@
 { config, pkgs, lib, ... }: {
   home.file = {
-    p10k = {
-      source = ../../../dotfiles/zsh/p10k.zsh;
-      target = ".p10k.zsh";
-    };
-    docker-completion = {
-      source = ../../../dotfiles/zsh/completion/_docker;
-      target = ".config/zsh/completion/_docker";
+    starship = {
+      source = ../../../dotfiles/starship.toml;
+      target = ".config/starship.toml";
     };
     docker-compose-completion = {
       source = ../../../dotfiles/zsh/completion/_docker-compose;
@@ -68,7 +64,7 @@
         src = "$HOME/src";
       };
       plugins = with pkgs; [
-        (mkZshPlugin { pkg = zsh-powerlevel10k; file = "powerlevel10k.zsh-theme"; })
+        # (mkZshPlugin { pkg = zsh-powerlevel10k; file = "powerlevel10k.zsh-theme"; })
       ];
     };
 }

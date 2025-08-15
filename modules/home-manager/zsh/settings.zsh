@@ -143,3 +143,5 @@ if type zellij > /dev/null; then
     eval "$(zellij setup --generate-auto-start zsh)"
   fi
 fi
+
+eval "$(starship init zsh)"

@@ -7,6 +7,7 @@
       EDITOR = "vim";
     };
     packages = with pkgs; [
+      starship
       ripgrep
       unixtools.watch
     ];
