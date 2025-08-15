@@ -127,17 +127,34 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+        "nixpkgs-nodejs_18": "nixpkgs-nodejs_18",
         "nixpkgs-terraform": "nixpkgs-terraform"
       },
       "locked": {
-        "lastModified": 1744725289,
-        "narHash": "sha256-wmS+jd7NsSCmuN81PQ4wNpQtmfG0xgiUGwZdYYZkG1w=",
+        "lastModified": 1755113193,
+        "narHash": "sha256-+GbXUBdYR6VPDJWCZOm5me2Ir9+iQNCXp9LQYtFif6c=",
         "path": "/Users/haran/src/metronome/nixpkgs",
         "type": "path"
       },
       "original": {
         "path": "/Users/haran/src/metronome/nixpkgs",
         "type": "path"
+      }
+    },
+    "nixpkgs-nodejs_18": {
+      "locked": {
+        "lastModified": 1751290243,
+        "narHash": "sha256-kNf+obkpJZWar7HZymXZbW+Rlk3HTEIMlpc6FCNz0Ds=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5ab036a8d97cb9476fbe81b09076e6e91d15e1b6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-24.11-darwin",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs-stable": {
