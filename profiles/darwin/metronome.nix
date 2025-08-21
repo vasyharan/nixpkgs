@@ -25,6 +25,7 @@
       substrate
       quikstrate
 
+      jujutsu
       inetutils
 
       # k8s
