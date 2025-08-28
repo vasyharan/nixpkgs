@@ -1,4 +1,3 @@
 self: super: {
-  vimPlugins = super.vimPlugins // {
-  };
+  vimPlugins = super.vimPlugins // { };
 }
