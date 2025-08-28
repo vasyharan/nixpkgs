@@ -1,9 +1,5 @@
 { config, pkgs, lib, ... }: {
   home.file = {
-    starship = {
-      source = ../../../dotfiles/starship.toml;
-      target = ".config/starship.toml";
-    };
     docker-compose-completion = {
       source = ../../../dotfiles/zsh/completion/_docker-compose;
       target = ".config/zsh/completion/_docker-compose";
