@@ -33,7 +33,27 @@
     zellij = {
       enable = true;
     };
-
+    jujutsu = {
+      enable = true;
+      settings = {
+        ui = {
+          pager = ":builtin";
+        };
+        colors = {
+          "diff token" = {
+            underline = false;
+          };
+          "diff removed token" = {
+            bg = "#cc241d";
+            fg = "#ebdbb2";
+          };
+          "diff added token" = {
+            bg = "#98971a";
+            fg = "#fbf1c7";
+          };
+        };
+      };
+    };
     git = {
       enable = true;
       delta = { enable = true; };
