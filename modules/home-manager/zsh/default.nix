@@ -2,7 +2,7 @@
   home.file = {
     docker-compose-completion = {
       source = ../../../dotfiles/zsh/completion/_docker-compose;
-      target = ".config/zsh/completion/_docker-compose";
+      target = config.xdg.configHome + "/zsh/completion/_docker-compose";
     };
   };
 
@@ -16,7 +16,7 @@
     in
     {
       enable = true;
-      dotDir = ".config/zsh";
+      dotDir = config.xdg.configHome + "/zsh";
       initContent = lib.mkMerge [
         (lib.mkBefore ''
           ${builtins.readFile(./settings-first.zsh)}
