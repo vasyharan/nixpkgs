@@ -39,10 +39,30 @@
         "$schema" = "https://starship.rs/config-schema.json";
         add_newline = true;
         format = "($directory)( \${custom.jj}\${custom.git_branch}\${custom.git_commit}\${custom.git_state}\${custom.git_status})( $cmd_duration)( $character)";
-        right_format = "$all";
+        right_format = "$battery$all";
 
         aws.disabled = true;
         package.disabled = true;
+
+        battery = {
+          format = "[$symbol]($style)";
+          unknown_symbol = "";
+        };
+
+        battery.display = [
+          {
+            threshold = 30;
+            style = "bright-yellow";
+            discharging_symbol = "";
+            charging_symbol = "";
+          }
+          {
+            threshold = 10;
+            style = "bright-red";
+            discharging_symbol = "";
+            charging_symbol = "";
+          }
+        ];
 
         character = {
           success_symbol = "[;](green)";
