@@ -24,7 +24,10 @@
 
   programs = {
     home-manager.enable = true;
-    fzf.enable = true;
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
