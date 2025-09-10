@@ -4,6 +4,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-utils.url = "github:numtide/flake-utils/v1.0.0";
     darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,6 +16,12 @@
     zjstatus = {
       url = "github:dj95/zjstatus/v0.21.1";
       inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+    starship-jj = {
+      url = "gitlab:lanastara_foss/starship-jj/0.6.0";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.flake-utils.follows = "flake-utils";
     };
     nixpkgs-metronome = {
       url = "path:/Users/haran/src/metronome/nixpkgs";
@@ -33,6 +40,7 @@
         (import ./overlay.nix)
         (final: prev: {
           zjstatus = inputs.zjstatus.packages.${system}.default;
+          starship-jj = inputs.starship-jj.packages.${system}.default;
           # https://github.com/LnL7/nix-darwin/issues/1041
           # karabiner-elements = inputs.nixpkgs-stable.legacyPackages.${system}.karabiner-elements;
           karabiner-elements = prev.karabiner-elements.overrideAttrs (attrs: {

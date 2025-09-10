@@ -9,6 +9,7 @@
     packages = with pkgs; [
       ripgrep
       unixtools.watch
+      starship-jj
     ];
   };
 
@@ -17,8 +18,12 @@
   };
 
   xdg.configFile = {
-    "ripgrep/ripgreprc" = {
-      source = ../../dotfiles/ripgreprc;
+    "ripgrep/ripgreprc" = { 
+      source = ../../dotfiles/ripgreprc; 
+    };
+    starship-jj = {
+      source = ../../dotfiles/starship-jj;
+      recursive = true;
     };
   };
 
@@ -41,7 +46,7 @@
       settings = {
         "$schema" = "https://starship.rs/config-schema.json";
         add_newline = true;
-        format = "($directory)( \${custom.jj}\${custom.git_branch}\${custom.git_commit}\${custom.git_state}\${custom.git_status})( $cmd_duration)( $character)";
+        format = "$directory \${custom.jj}\${custom.git}$cmd_duration$character";
         right_format = "$battery$all";
 
         aws.disabled = true;
@@ -171,55 +176,57 @@
 
         custom = {
           git_branch = {
-            when = "! jj --ignore-working-copy root";
             command = "starship module git_branch";
-            description = "Only show git_branch if we're not in a jj repo";
             format = "[$symbol($output)]($style)";
           };
           git_status = {
-            when = "! jj --ignore-working-copy root";
             command = "starship module git_status";
-            description = "Only show git_status if we're not in a jj repo";
             format = "[$symbol($output)]($style)";
           };
           git_commit = {
-            when = "! jj --ignore-working-copy root";
             command = "starship module git_commit";
-            description = "Only show git_commit if we're not in a jj repo";
             format = "[$symbol($output)]($style)";
           };
           git_state = {
-            when = "! jj --ignore-working-copy root";
             command = "starship module git_state";
-            description = "Only show git_state if we're not in a jj repo";
             format = "[$symbol($output)]($style)";
           };
+          git = {
+            when = "! jj --ignore-working-copy root";
+            format = "\${custom.git_branch}\${custom.git_commit}\${custom.git_state}\${custom.git_status}";
+          };
           jj = {
-            description = "The current jj status";
-            when = "jj --ignore-working-copy root";
-            format = "[$symbol($output)]($style)";
-            style = "bright-black";
-            command = ''
-              jj log --revisions @ --no-graph --ignore-working-copy --color never --limit 1 --template '
-                concat(
-                  raw_escape_sequence("\x1b[35m"),
-                  coalesce(bookmarks, change_id.shortest()),
-                  raw_escape_sequence("\x1b[0m"),
-                  " ",
-                  raw_escape_sequence("\x1b[90m"),
-                  if(empty, "∅ "),
-                  coalesce(
-                    truncate_end(27, description.first_line(), "…"),
-                    "(no description set)",
-                  ),
-                  raw_escape_sequence("\x1b[0m"),
-                  if(conflict, raw_escape_sequence("\x1b[91m") ++ "!" ++ raw_escape_sequence("\x1b[0m")),
-                  if(divergent, raw_escape_sequence("\x1b[91m") ++ "¡" ++ raw_escape_sequence("\x1b[0m")),
-                  if(hidden, raw_escape_sequence("\x1b[90m") ++ "¿" ++ raw_escape_sequence("\x1b[0m")),
-                  if(immutable, raw_escape_sequence("\x1b[90m") ++ "" ++ raw_escape_sequence("\x1b[0m")),
-                )
-              '
-            '';
+            command = "prompt";
+            format = "$output";
+            ignore_timeout = true;
+            shell = ["starship-jj" "--ignore-working-copy" "starship"];
+            use_stdin = false;
+            when = true;
+            # description = "The current jj status";
+            # when = "jj --ignore-working-copy root";
+            # format = "[$symbol($output)]($style)";
+            # style = "bright-black";
+            # command = ''
+            #   jj log --revisions @ --no-graph --ignore-working-copy --color never --limit 1 --template '
+            #     concat(
+            #       raw_escape_sequence("\x1b[35m"),
+            #       coalesce(bookmarks, change_id.shortest()),
+            #       raw_escape_sequence("\x1b[0m"),
+            #       " ",
+            #       raw_escape_sequence("\x1b[90m"),
+            #       if(empty, "∅ "),
+            #       coalesce(
+            #         truncate_end(27, description.first_line(), "…"),
+            #         "(no description set)",
+            #       ),
+            #       raw_escape_sequence("\x1b[0m"),
+            #       if(conflict, raw_escape_sequence("\x1b[91m") ++ "!" ++ raw_escape_sequence("\x1b[0m")),
+            #       if(divergent, raw_escape_sequence("\x1b[91m") ++ "¡" ++ raw_escape_sequence("\x1b[0m")),
+            #       if(hidden, raw_escape_sequence("\x1b[90m") ++ "¿" ++ raw_escape_sequence("\x1b[0m")),
+            #       if(immutable, raw_escape_sequence("\x1b[90m") ++ "" ++ raw_escape_sequence("\x1b[0m")),
+            #     )
+            #   '
+            # '';
           };
         };
       };

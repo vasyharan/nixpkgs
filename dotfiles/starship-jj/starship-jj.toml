@@ -1,0 +1,50 @@
+module_separator = " "
+reset_color = true
+
+[bookmarks]
+search_depth = 100
+exclude = []
+
+[[module]]
+type = "Bookmarks"
+separator = "|"
+color = "Magenta"
+behind_symbol = "⇡"
+surround_with_quotes = false
+
+[[module]]
+type = "Commit"
+color = "BrightBlack"
+max_length = 24
+empty_text = "(no description set)"
+separator = "|"
+surround_with_quotes = false
+
+[[module]]
+type = "State"
+separator = "|"
+
+[module.conflict]
+disabled = false
+text = "(conflict)"
+color = "Red"
+
+[module.divergent]
+disabled = false
+text = "(divergent)"
+color = "Cyan"
+
+[module.empty]
+disabled = false
+text = "(empty)"
+color = "Yellow"
+
+[module.immutable]
+disabled = false
+text = "(immutable)"
+color = "Yellow"
+
+[module.hidden]
+disabled = false
+text = "(hidden)"
+color = "Yellow"
