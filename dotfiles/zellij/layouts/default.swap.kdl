@@ -128,3 +128,4 @@ swap_floating_layout name="spread" {
 swap_floating_layout name="staggered" {
     floating_panes
 }
+

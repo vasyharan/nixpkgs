@@ -18,8 +18,8 @@
   };
 
   xdg.configFile = {
-    "ripgrep/ripgreprc" = { 
-      source = ../../dotfiles/ripgreprc; 
+    "ripgrep/ripgreprc" = {
+      source = ../../dotfiles/ripgreprc;
     };
     starship-jj = {
       source = ../../dotfiles/starship-jj;

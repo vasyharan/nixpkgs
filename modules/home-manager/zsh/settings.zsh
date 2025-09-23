@@ -139,7 +139,6 @@ random-uuid() {
 if type zellij > /dev/null; then
   if [[ -o interactive && "${TERM_PROGRAM}" == "ghostty" ]]; then
     export ZELLIJ_AUTO_EXIT=true
-    export ZELLIJ_AUTO_ATTACH=true
     eval "$(zellij setup --generate-auto-start zsh)"
   fi
 fi

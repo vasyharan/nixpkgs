@@ -29,8 +29,11 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "bak";
+  };
 
   services.karabiner-elements.enable = true;
   programs.zsh.enable = true;
