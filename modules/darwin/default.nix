@@ -38,6 +38,8 @@
   services.karabiner-elements.enable = true;
   programs.zsh.enable = true;
 
+  environment.shells = [ pkgs.zsh ];
+
   user = {
     home = "/Users/${config.user.name}";
     shell = pkgs.zsh;
