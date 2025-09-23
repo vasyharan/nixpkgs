@@ -46,7 +46,7 @@
       settings = {
         "$schema" = "https://starship.rs/config-schema.json";
         add_newline = true;
-        format = "$directory \${custom.jj}\${custom.git}$cmd_duration$character";
+        format = "$directory \${custom.jj}\${custom.git}$cmd_duration$line_break$character";
         right_format = "$battery$all";
 
         aws.disabled = true;
