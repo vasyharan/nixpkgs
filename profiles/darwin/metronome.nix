@@ -83,6 +83,27 @@
         fi
         eval $credentials
       }
+      aws-console() {
+        set -o pipefail
+
+        declare -A env_to_quality
+        env_to_quality=( [staging]=alpha [prod]=gamma )
+
+        aws-login
+        if [[ $1 == "" ]]; then
+          echo "Usage: aws-console (staging|prod <domain>)|management|substrate|audit|deploy|network"
+          return 1
+        elif [[ $1 == "management" ]]; then
+          substrate assume-role -q --management --console
+        elif [[ $1 == "substrate" ]]; then
+          substrate assume-role -q --substrate --console
+        elif [[ $1 == "audit" || $1 == "deploy" || $1 == "network" ]]; then 
+          substrate assume-role -q --special=$1 --console
+        else
+          quality=''${env_to_quality[$1]}
+          substrate assume-role -q -d=$2 -e=$1 --quality=$quality --console
+        fi
+      }
       kubectx() {
         declare -A cluster_to_project
         cluster_to_project=( [rating]=ingest [dagster]=lakehouse )
@@ -138,7 +159,7 @@
     sessionVariables = {
       SUBSTRATE_ROOT = "$HOME/src/metronome/substrate";
       SUBSTRATE_FEATURES = "IgnoreMacOSKeychain";
-      PATH = "$HOME/src/metronome/mkcat/bin:$PATH";
+      PATH = "$HOME/src/metronome/mkcat/bin:$HOME/src/metronome/migrations/bin:$PATH";
     };
   };
 }
