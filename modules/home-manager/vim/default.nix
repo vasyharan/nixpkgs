@@ -33,11 +33,8 @@
           { plugin = vim-bbye; }
           { plugin = vim-speeddating; }
 
-          # (pluginWithLua { plugin = orgmode; })
           (pluginWithLua { plugin = kommentary; })
           { plugin = copilot-vim; }
-
-          # (pluginWithLua { plugin = go-nvim; file = "go-nvim"; })
         ];
     };
 

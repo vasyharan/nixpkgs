@@ -199,7 +199,7 @@
             command = "prompt";
             format = "$output";
             ignore_timeout = true;
-            shell = ["starship-jj" "--ignore-working-copy" "starship"];
+            shell = [ "starship-jj" "--ignore-working-copy" "starship" ];
             use_stdin = false;
             when = true;
             # description = "The current jj status";

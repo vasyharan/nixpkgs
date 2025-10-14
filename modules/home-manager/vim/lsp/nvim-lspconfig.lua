@@ -1,4 +1,3 @@
-local lspconfig = require('lspconfig')
 local cmp_lsp = require('cmp_nvim_lsp')
 
 vim.lsp.set_log_level("off")
@@ -97,7 +96,7 @@ function lspconfig_setup(server, config)
     cmp_lsp.default_capabilities()
   )
 
-  lspconfig[server].setup(vim.tbl_extend('keep', config, {
+  vim.lsp.config(server, vim.tbl_extend('keep', config, {
     on_attach = lsp_on_attach,
     capabilities = capabilities
   }))

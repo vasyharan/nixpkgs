@@ -37,7 +37,7 @@
       inherit (darwin.lib) darwinSystem;
 
       mkDefaultOverlays = { system }: [
-        (import ./overlay.nix)
+        # (import ./overlay.nix)
         (final: prev: {
           zjstatus = inputs.zjstatus.packages.${system}.default;
           starship-jj = inputs.starship-jj.packages.${system}.default;
@@ -50,6 +50,12 @@
               hash = "sha256-gmJwoht/Tfm5qMecmq1N6PSAIfWOqsvuHU8VDJY8bLw=";
             };
           });
+        })
+      ];
+
+      mkOverrideOverlays = { system }: [
+        (final: prev: {
+          nodejs = prev.nodejs_22;
         })
       ];
 
@@ -66,9 +72,15 @@
         , extraOverlays ? [ ]
         }: darwinSystem {
           inherit system;
-          modules = [ ({ ... }: { nixpkgs.overlays = mkDefaultOverlays { inherit system; } ++ extraOverlays; }) ]
-            ++ baseModules
-            ++ extraModules;
+          modules = [
+            ({ ... }: {
+              nixpkgs.overlays = mkDefaultOverlays { inherit system; }
+                ++ extraOverlays
+                ++ mkOverrideOverlays { inherit system; };
+            })
+          ]
+          ++ baseModules
+          ++ extraModules;
           specialArgs = { inherit inputs lib nixpkgs; };
         };
 
