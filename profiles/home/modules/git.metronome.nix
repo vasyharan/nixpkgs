@@ -10,6 +10,10 @@
         name = "Thirukumaran Vaseeharan";
         email = "haran@metronome.com";
       };
+
+      aliases = {
+        "fetch" = ["git" "fetch" "-b" "main" "-b" "glob:haran/*"];
+      };
     };
   };
 }
