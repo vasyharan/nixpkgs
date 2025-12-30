@@ -253,26 +253,31 @@
         };
       };
     };
+    delta = { 
+      enable = true; 
+      enableGitIntegration = true;
+    };
     git = {
       enable = true;
-      delta = { enable = true; };
-      aliases = {
-        st = "status";
-        co = "checkout";
-        cb = "checkout -b";
+      settings = {
+        aliases = {
+          st = "status";
+          co = "checkout";
+          cb = "checkout -b";
+        };
+        # extraConfig = {
+          init = {
+            defaultBranch = "main";
+          };
+          delta = {
+            navigate = true;
+          };
+          help = {
+            autocorrect = 1;
+          };
+        # };
       };
       ignores = [ ".DS_Store" "tf.plan" ];
-      extraConfig = {
-        init = {
-          defaultBranch = "main";
-        };
-        delta = {
-          navigate = true;
-        };
-        help = {
-          autocorrect = 1;
-        };
-      };
     };
   };
 }

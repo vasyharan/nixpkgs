@@ -2,7 +2,7 @@
   description = "vasyharan's nix configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-utils.url = "github:numtide/flake-utils/v1.0.0";
     darwin = {
@@ -14,12 +14,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zjstatus = {
-      url = "github:dj95/zjstatus/v0.21.1";
+      url = "github:dj95/zjstatus/v0.22.0";
       inputs.nixpkgs.follows = "nixpkgs-stable";
       inputs.flake-utils.follows = "flake-utils";
     };
     starship-jj = {
-      url = "gitlab:lanastara_foss/starship-jj/0.6.0";
+      url = "gitlab:lanastara_foss/starship-jj/0.7.0";
       inputs.nixpkgs.follows = "nixpkgs-stable";
       inputs.flake-utils.follows = "flake-utils";
     };

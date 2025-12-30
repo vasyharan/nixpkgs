@@ -1,7 +1,11 @@
 { ... }: {
   programs.git = {
-    userName = "Thirukumaran Vaseeharan";
-    userEmail = "vasyharan@gmail.com";
+    settings = {
+      user = {
+        name = "Thirukumaran Vaseeharan";
+        email = "vasyharan@gmail.com";
+      };
+    };
   };
 }
 
