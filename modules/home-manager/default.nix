@@ -9,6 +9,7 @@
     packages = with pkgs; [
       ripgrep
       unixtools.watch
+      coreutils
       starship-jj
     ];
   };
