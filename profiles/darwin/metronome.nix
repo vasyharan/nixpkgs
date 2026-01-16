@@ -85,22 +85,23 @@
       aws-console() {
         set -o pipefail
 
-        declare -A env_to_quality
-        env_to_quality=( [staging]=alpha [prod]=gamma )
-
         aws-login
-        if [[ $1 == "" ]]; then
+        account=""
+        if [[ $1 == "management" || $1 == "audit" || $1 == "deploy" || $1 == "network" ]]; then
+          filter=".Accounts[] | select(.Tags.SubstrateSpecialAccount==\"$1\") | .Id"
+        elif [[ $1 == "substrate" ]]; then
+          filter=".Accounts[] | select(.Tags.Domain==\"admin\" and .Tags.Environment==\"admin\") | .Id"
+        else
+          filter=".Accounts[] | select(.Tags.Environment==\"$1\" and .Tags.Domain==\"$2\") | .Id"
+        fi
+
+        account=$(quikstrate accounts --format=json | jq -r $filter)
+        if [[ $account == "" ]]
+        then
           echo "Usage: aws-console (staging|prod <domain>)|management|substrate|audit|deploy|network"
           return 1
-        elif [[ $1 == "management" ]]; then
-          substrate assume-role -q --management --console
-        elif [[ $1 == "substrate" ]]; then
-          substrate assume-role -q --substrate --console
-        elif [[ $1 == "audit" || $1 == "deploy" || $1 == "network" ]]; then 
-          substrate assume-role -q --special=$1 --console
         else
-          quality=''${env_to_quality[$1]}
-          substrate assume-role -q -d=$2 -e=$1 --quality=$quality --console
+          open "https://gnome.house/accounts?number=$${account}&role=Administrator"
         fi
       }
       kubectx() {
