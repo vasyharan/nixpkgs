@@ -49,6 +49,7 @@
       };
       shellAliases = {
         g = "git";
+        j = "jj";
         ll = "ls -l";
         la = "ls -a";
         dh = "dirs -v";
