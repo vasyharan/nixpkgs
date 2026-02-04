@@ -4,12 +4,6 @@
     imports = [
       ../home/modules/git.metronome.nix
     ];
-    xdg.configFile = {
-      karabiner = {
-        source = ../../dotfiles/karabiner;
-        recursive = true;
-      };
-    };
     home.file = {
       bazel-completion = {
         source = "${pkgs.bazel_7}/share/zsh/site-functions/_bazel";
@@ -22,10 +16,12 @@
     };
   };
 
-  services = {
-    karabiner-elements.enable = true;
-  };
   environment = {
+    etc = {
+      "bashrc".enable = false;
+      "zshrc".enable = false;
+      "zprofile".enable = false;
+    };
     systemPackages = with pkgs; [
       # aws
       awscli2
@@ -68,23 +64,22 @@
       kctx = "kubectx";
     };
     initContent = ''
+      # if [[ -f ~/.stripe/shellinit/zshrc ]]; then
+      #  source ~/.stripe/shellinit/zshrc
+      # fi
     '';
     dirHashes = {
-      work = "$HOME/src/metronome";
+      metronome = "$HOME/stripe/metronome";
+      stripe = "$HOME/stripe";
 
-      devenv = "$HOME/src/metronome/local-development";
-      charts = "$HOME/src/metronome/charts";
-      frontend = "$HOME/src/metronome/frontend";
-      gateway = "$HOME/src/metronome/graphql-gateway";
-      resolvers = "$HOME/src/metronome/graphql-resolvers";
-      kafka = "$HOME/src/metronome/kafka";
-      mri = "$HOME/src/metronome/metering-rating-invoicing-service";
-      substrate = "$HOME/src/metronome/metronome-substrate";
+      kafka = "$HOME/stripe/metronome/kafka";
+      mri = "$HOME/stripe/metronome/metering-rating-invoicing-service";
+      substrate = "$HOME/stripe/metronome/substrate";
     };
     sessionVariables = {
-      SUBSTRATE_ROOT = "$HOME/src/metronome/substrate";
+      SUBSTRATE_ROOT = "$HOME/stripe/metronome/substrate";
       SUBSTRATE_FEATURES = "IgnoreMacOSKeychain";
-      PATH = "$HOME/src/metronome/mkcat/bin:$HOME/src/metronome/migrations/bin:$PATH";
+      PATH = "$HOME/stripe/metronome/mkcat/bin:$HOME/stripe/metronome/migrations/bin:$PATH";
     };
     siteFunctions = {
       mkcd = ''
@@ -175,4 +170,6 @@
       '';
     };
   };
+
+  security.pam.services.sudo_local.enable = false;
 }

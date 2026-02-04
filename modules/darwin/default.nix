@@ -35,9 +35,7 @@
     backupFileExtension = "bak";
   };
 
-  services.karabiner-elements.enable = true;
   programs.zsh.enable = true;
-
   environment.shells = [ pkgs.zsh ];
 
   user = {
@@ -54,10 +52,6 @@
   home = {
     imports = [ ../home-manager ];
     xdg.configFile = {
-      karabiner = {
-        source = ../../dotfiles/karabiner;
-        recursive = true;
-      };
       ghostty = {
         source = ../../dotfiles/ghostty;
         recursive = true;
@@ -65,6 +59,6 @@
     };
   };
 
-  system.stateVersion = 4;
+  system.stateVersion = 5;
   system.primaryUser = config.user.name;
 }

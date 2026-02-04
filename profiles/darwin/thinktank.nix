@@ -6,8 +6,17 @@
       ../home/modules/kitty.nix
       ../home/modules/vscode.nix
     ];
+    zdg.configFile = {
+      karabiner = {
+        source = ../../dotfiles/karabiner;
+        recursive = true;
+      };
+    };
   };
 
+  services = {
+    karabiner-elements.enable = true;
+  };
   environment = {
     systemPackages = with pkgs; [
       colima

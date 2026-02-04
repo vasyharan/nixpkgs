@@ -171,15 +171,14 @@
         "nixpkgs-terraform": "nixpkgs-terraform"
       },
       "locked": {
-        "lastModified": 1757441029,
-        "narHash": "sha256-bzin9E4qxDGRCrJ23XJ4KOqyQ0MnLyj5RydwZOD8yow=",
-        "path": "/Users/haran/src/metronome/nixpkgs",
+        "path": "./packages/metronome",
         "type": "path"
       },
       "original": {
-        "path": "/Users/haran/src/metronome/nixpkgs",
+        "path": "./packages/metronome",
         "type": "path"
-      }
+      },
+      "parent": []
     },
     "nixpkgs-nodejs_18": {
       "locked": {

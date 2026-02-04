@@ -24,7 +24,7 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     nixpkgs-metronome = {
-      url = "path:/Users/haran/src/metronome/nixpkgs";
+      url = "path:./packages/metronome";
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -55,7 +55,6 @@
 
       mkOverrideOverlays = { system }: [
         (final: prev: {
-          nodejs = prev.nodejs_22;
         })
       ];
 
@@ -130,6 +129,15 @@
             system = "aarch64-darwin";
             extraModules = [
               ./profiles/darwin/metronome.nix
+            ];
+            extraOverlays = [
+              inputs.nixpkgs-metronome.overlays.default
+            ];
+          };
+          stripe = mkDarwinConfiguration {
+            system = "aarch64-darwin";
+            extraModules = [
+              ./profiles/darwin/stripe.nix
             ];
             extraOverlays = [
               inputs.nixpkgs-metronome.overlays.default
